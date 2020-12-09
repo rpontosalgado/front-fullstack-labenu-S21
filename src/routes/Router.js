@@ -1,12 +1,13 @@
 import React from "react";
-import ErrorPage from "../screens/ErrorPage/ErrorPage";
 import { Route, Switch } from "react-router-dom";
+import ErrorPage from "../screens/ErrorPage/ErrorPage";
+import LoginPage from "../screens/LoginPage/LoginPage";
 
 const Router = props => {
   return (
     <Switch>
-      <Route exact path={"/login"}>
-        <div />
+      <Route exact path={"/user/login"}>
+        <LoginPage setButtonName = {props.setButtonName} />
       </Route>
       <Route exact path={"/signup"}>
         <div />
