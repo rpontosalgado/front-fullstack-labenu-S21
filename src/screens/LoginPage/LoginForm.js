@@ -6,7 +6,7 @@ import { InputsContainer, LoginFormContainer } from "./styled";
 import useForm from "../../hooks/useForm";
 
 const LoginForm = props => {
-  const [form, handleInputChange] = useForm({email: "", password: ""});
+  const [form, handleInputChange] = useForm({input: "", password: ""});
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,13 +29,12 @@ const LoginForm = props => {
       <LoginFormContainer>
         <InputsContainer>
           <TextField 
-            value={form.email}
-            name={'email'}
+            value={form.input}
+            name={'input'}
             onChange={handleInputChange}
-            label={'E-mail'}
+            label={'E-mail ou Nickname'}
             variant={'outlined'}
             margin={'normal'}
-            type={'email'}
             fullWidth
             autoFocus
             required

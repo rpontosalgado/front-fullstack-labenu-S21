@@ -8,7 +8,7 @@ export const ScreenContainer = styled.div`
   width: 100vw;
 `
 
-export const LoginIcon = styled(Icon)`
+export const SignupIcon = styled(Icon)`
   display: block;
   color: rgba(0, 0, 0, 0.87);
   width: 40vw;
@@ -16,21 +16,16 @@ export const LoginIcon = styled(Icon)`
   margin: 20px;
 `
 
-export const LoginFormContainer = styled.div`
+export const SignupFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80vw;
-  max-width: 480px;
-  margin-bottom: 16px;
+  max-width: 450px;
+  margin-bottom: 20px;
 `
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
-`
-
-export const SignUpButtonContainer = styled.div`
-  width: 80vw;
-  max-width: 480px;
+  margin-bottom: 20px;
 `
