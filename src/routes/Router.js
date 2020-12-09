@@ -22,7 +22,7 @@ const Router = props => {
         <ErrorPage />
       </Route>
     </Switch>
-  )
+  );
 }
 
 export default Router;

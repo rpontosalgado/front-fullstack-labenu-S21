@@ -26,7 +26,7 @@ const LoginPage = props => {
         </Button>
       </SignUpButtonContainer>
     </ScreenContainer>
-  )
+  );
 }
 
 export default LoginPage;
