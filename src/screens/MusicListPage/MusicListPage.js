@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import useGetUserMusic from "../../hooks/useRequestData";
-import useUnprotectedPage from "../../hooks/useUnprotectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
 import { MusicListContainer } from "./styled";
 
 const MusicListPage = props => {
-  useUnprotectedPage();
+  useProtectedPage();
   const [open, setOpen] = useState(false);
   const [list, updateList] = useGetUserMusic({}, "/music");
 
-  const music = list.music;
+  const { music } = list;
 
   const RenderMusicList = () => (
     music.sort((a, b) => b.date - a.date).map(item => (

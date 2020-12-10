@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import ErrorPage from "../screens/ErrorPage/ErrorPage";
 import LoginPage from "../screens/LoginPage/LoginPage";
 import SignupPage from "../screens/SignupPage/SignupPage";
+import MusicListPage from "../screens/MusicListPage/MusicListPage";
+import MusicDetailsPage from "../screens/MusicDetailsPage/MusicDetailsPage";
 
 const Router = props => {
   return (
@@ -14,10 +16,10 @@ const Router = props => {
         <SignupPage setButtonName = {props.setButtonName} />
       </Route>
       <Route exact path={["/music", "/"]}>
-        <div />
+        <MusicListPage />
       </Route>
       <Route exact path={"/music/:id"}>
-        <div />
+        <MusicDetailsPage />
       </Route>
       <Route>
         <ErrorPage />
