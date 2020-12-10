@@ -6,7 +6,7 @@ const ErrorPage = () => {
   return (
     <ErrorPageContainer>
       <ErrorIcon path={mdiWaves} />
-      <ErrorText color={"textPrimary"} variant={"h3"} align={"center"}>
+      <ErrorText color="textPrimary" variant="h3" align="center">
         {"Erro 404 - Página não encontrada :("}
       </ErrorText>
     </ErrorPageContainer>
