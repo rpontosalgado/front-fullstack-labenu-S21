@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, CircularProgress, TextField } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import { InputsContainer, SignupFormContainer } from "./styled";
+import { signup } from "../../services/user";
 
 const SignupForm = props => {
   const history = useHistory();
@@ -26,67 +27,67 @@ const SignupForm = props => {
     element.reportValidity();
     
     if (isValid) {
-      signUp(form, history, props.setButtonName, setIsLoading);
+      signup(form, history, props.setButtonName, setIsLoading);
     }
   }
 
   return (
-    <form id={"signup-form"}>
+    <form id="signup-form">
       <SignupFormContainer>
         <InputsContainer>
           <TextField
             value={form.name}
-            name={'name'}
+            name='name'
             onChange={handleInputChange}
-            label={'Nome'}
-            variant={'outlined'}
-            margin={'normal'}
+            label='Nome'
+            variant='outlined'
+            margin='normal'
             fullWidth
             autoFocus
             required
           />
           <TextField
             value={form.email}
-            name={'email'}
+            name='email'
             onChange={handleInputChange}
-            label={'E-mail'}
-            variant={'outlined'}
-            margin={'normal'}
-            type={'email'}
+            label='E-mail'
+            variant='outlined'
+            margin='normal'
+            type='email'
             fullWidth
             required
           />
           <TextField
             value={form.nickname}
-            name={'nickname'}
+            name='nickname'
             onChange={handleInputChange}
-            label={'Apelido'}
-            variant={'outlined'}
-            margin={'normal'}
+            label='Apelido'
+            variant='outlined'
+            margin='normal'
             fullWidth
             required
           />
           <TextField
             value={form.password}
-            name={'password'}
+            name='password'
             onChange={handleInputChange}
-            label={'Senha'}
-            variant={'outlined'}
-            margin={'normal'}
-            type={'password'}
+            label='Senha'
+            variant='outlined'
+            margin='normal'
+            type='password'
             fullWidth
             required
           />
         </InputsContainer>
         <Button
-          color={'primary'}
-          variant={'contained'}
-          type={'submit'}
-          size={'large'}
+          color='primary'
+          variant='contained'
+          type='submit'
+          size='large'
           fullWidth
           onClick={onClickSignup}
         >
-          {isLoading ? <CircularProgress color={"primary"} size={26} /> : "Fazer Cadastro"}
+          {isLoading ? <CircularProgress color="primary" size={26} /> : "Fazer Cadastro"}
         </Button>
       </SignupFormContainer>
     </form>

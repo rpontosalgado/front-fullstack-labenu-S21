@@ -15,5 +15,21 @@ export const login = (body, history, setButtonName, setIsLoading) => {
       
       setButtonName("Logout");
     })
-    .catch(err => alert("Falha no login, tente novamente"))
+    .catch(err => alert("Falha no login, tente novamente"));
+}
+
+export const signup = (body, history, setButtonName, setIsLoading) => {
+  setIsLoading(true);
+
+  axios.post(`${baseUrl}/user/signup`, body)
+    .then(response => {
+      localStorage.setItem("token", response.data.token);
+
+      setIsLoading(false);
+
+      goToMusicList(history);
+
+      setButtonName("Logout");
+    })
+    .catch(err => alert("Falha no cadastro, tente novamente"));
 }

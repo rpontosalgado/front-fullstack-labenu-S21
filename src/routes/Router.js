@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import ErrorPage from "../screens/ErrorPage/ErrorPage";
 import LoginPage from "../screens/LoginPage/LoginPage";
+import SignupPage from "../screens/SignupPage/SignupPage";
 
 const Router = props => {
   return (
@@ -10,7 +11,7 @@ const Router = props => {
         <LoginPage setButtonName = {props.setButtonName} />
       </Route>
       <Route exact path={"/signup"}>
-        <div />
+        <SignupPage setButtonName = {props.setButtonName} />
       </Route>
       <Route exact path={["/music", "/"]}>
         <div />

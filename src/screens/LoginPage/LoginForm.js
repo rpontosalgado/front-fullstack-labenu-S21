@@ -25,41 +25,41 @@ const LoginForm = props => {
   }
 
   return (
-    <form id={"login-form"}>
+    <form id="login-form">
       <LoginFormContainer>
         <InputsContainer>
           <TextField 
             value={form.input}
-            name={'input'}
+            name='input'
             onChange={handleInputChange}
-            label={'E-mail ou Nickname'}
-            variant={'outlined'}
-            margin={'normal'}
+            label='E-mail ou Nickname'
+            variant='outlined'
+            margin='normal'
             fullWidth
             autoFocus
             required
           />
           <TextField
             value={form.password}
-            name={'password'}
+            name='password'
             onChange={handleInputChange}
-            label={'Senha'}
-            variant={'outlined'}
-            margin={'normal'}
-            type={'password'}
+            label='Senha'
+            variant='outlined'
+            margin='normal'
+            type='password'
             fullWidth
             required
           />
         </InputsContainer>
         <Button
-          color={'primary'}
-          variant={'contained'}
-          type={'submit'}
-          size={'large'}
+          color='primary'
+          variant='contained'
+          type='submit'
+          size='large'
           fullWidth
           onClick={onClickLogin}
         >
-          {isLoading ? <CircularProgress color={"primary"} size={26}/> : "Fazer Login"}
+          {isLoading ? <CircularProgress color="primary" size={26}/> : "Fazer Login"}
         </Button>
       </LoginFormContainer>
     </form>

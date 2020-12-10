@@ -19,7 +19,7 @@ const LoginPage = props => {
       <SignUpButtonContainer>
         <Button
           onClick={() => goToSignup(history)}
-          color={"primary"}
+          color="primary"
           fullWidth
         >
           Não tem cadastro? Clique aqui

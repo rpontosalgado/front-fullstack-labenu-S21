@@ -28,12 +28,12 @@ const Header = props => {
     <AppBar>
       <Toolbar>
         <ButtonContainer>
-          <HeaderButton color={"inherit"} onClick={()=>goToMusicList(history)}>
+          <HeaderButton color="inherit" onClick={()=>goToMusicList(history)}>
             <LogoIcon path={mdiSharkFin} />
-            <HeaderTitle variant={"h1"} >SoundEnu</HeaderTitle>
+            <HeaderTitle variant="h1" >SoundEnu</HeaderTitle>
           </HeaderButton>
-          <Button color={"inherit"} variant={"contained"} onClick={HeaderAction} >
-            <LogTitle color={"primary"} variant={"h2"} >{buttonName}</LogTitle>
+          <Button color="inherit" variant="contained" onClick={HeaderAction} >
+            <LogTitle color="primary" variant="h2" >{buttonName}</LogTitle>
           </Button>
         </ButtonContainer>
       </Toolbar>
