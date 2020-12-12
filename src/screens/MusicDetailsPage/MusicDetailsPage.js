@@ -31,3 +31,5 @@ const MusicDetailsPage = () => {
     </MusicDetailsContainer>
   );
 }
+
+export default MusicDetailsPage;

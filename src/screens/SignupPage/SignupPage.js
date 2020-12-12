@@ -1,7 +1,8 @@
 import React from "react";
 import { mdiSharkFin } from "@mdi/js";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { ScreenContainer } from "./styled";
+import { ScreenContainer, SignupIcon } from "./styled";
+import SignupForm from "./SignupForm";
 
 const SignupPage = props => {
   useUnprotectedPage();

@@ -3,7 +3,7 @@ import { Chip, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { goToMusicDetails } from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
-import { MusicCardContainer, MusicInfoWrapper } from "./styled";
+import { GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
 
 const MusicCard = props => {
   const history = useHistory();
@@ -28,7 +28,7 @@ const MusicCard = props => {
         <Typography variant="h6" component="h3" align="center" >
           {props.title}
         </Typography>
-        <Typography align="center" >
+        <Typography align="center" gutterBottom>
           {props.authorName} · {props.album}
         </Typography>
         <GenresContainer>

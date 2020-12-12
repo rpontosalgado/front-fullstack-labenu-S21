@@ -20,4 +20,5 @@ export const MusicInfoWrapper = styled(CardContent)`
 
 export const GenresContainer = styled.div`
   display: flex;
+  gap: 0.5rem;
 `

@@ -1,5 +1,6 @@
-import { Card } from "@material-ui/core";
 import styled from "styled-components";
+import { Card, CardContent } from "@material-ui/core";
+
 
 export const MusicDetailsContainer = styled.div`
   display: flex;
