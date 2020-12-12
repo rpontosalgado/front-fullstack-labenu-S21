@@ -1,5 +1,7 @@
 import React from "react";
+import { Chip, Typography } from "@material-ui/core";
 import { MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
+import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {
 

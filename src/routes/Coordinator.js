@@ -1,9 +1,9 @@
 export const goToLogin = (history) => {
-  history.push("/login");
+  history.push("/user/login");
 }
 
 export const goToSignup = (history) => {
-  history.push("/signup");
+  history.push("/user/signup");
 }
 
 export const goToMusicList = (history) => {

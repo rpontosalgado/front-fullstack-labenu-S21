@@ -2,7 +2,14 @@ import axios from "axios";
 import { baseUrl } from "../constants/urls";
 import { goToMusicList } from "../routes/Coordinator";
 
-export const login = (body, history, setButtonName, setIsLoading) => {
+export const login = (
+  body,
+  history,
+  setButtonName,
+  setOpen,
+  setMessage,
+  setIsLoading
+) => {
   setIsLoading(true);
 
   axios.post(`${baseUrl}/user/login`, body)
@@ -15,7 +22,16 @@ export const login = (body, history, setButtonName, setIsLoading) => {
       
       setButtonName("Logout");
     })
-    .catch(err => alert("Falha no login, tente novamente"));
+    .catch(err => {
+      setIsLoading(false);
+      setOpen(true);
+
+      if (err.response.status === 401) {
+        setMessage("Usuário ou senha inválidos");  
+      } else {
+        setMessage(err.response.data.message);
+      }
+    });
 }
 
 export const signup = (body, history, setButtonName, setIsLoading) => {
@@ -31,5 +47,8 @@ export const signup = (body, history, setButtonName, setIsLoading) => {
 
       setButtonName("Logout");
     })
-    .catch(err => alert("Falha no cadastro, tente novamente"));
+    .catch(err => {
+      setIsLoading(false);
+      alert(err.response.data.message)
+    });
 }

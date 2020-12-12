@@ -7,11 +7,23 @@ import useForm from "../../hooks/useForm";
 
 const LoginForm = props => {
   const [form, handleInputChange] = useForm({input: "", password: ""});
+  
   const history = useHistory();
+  
   const [isLoading, setIsLoading] = useState(false);
+  const [inputError, setInputError] = useState(false);
+  const [inputErrorMessage, setInputErrorMessage] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+
 
   const onClickLogin = event => {
     event.preventDefault();
+
+    setInputError(false);
+    setInputErrorMessage("");
+    setPasswordError(false);
+    setPasswordErrorMessage("");
 
     const element = document.getElementById("login-form");
 
@@ -20,7 +32,24 @@ const LoginForm = props => {
     element.reportValidity();
 
     if (isValid) {
-      login(form, history, props.setButtonName, setIsLoading);
+      login(
+        form,
+        history,
+        props.setButtonName,
+        props.setOpen,
+        props.setMessage,
+        setIsLoading
+      );
+    } else {
+      if (!form.input) {
+        setInputError(true);
+        setInputErrorMessage("Favor informar um e-mail ou um nickname");
+      }
+
+      if (!form.password) {
+        setPasswordError(true);
+        setPasswordErrorMessage("Favor informar sua senha");
+      }
     }
   }
 
@@ -32,6 +61,8 @@ const LoginForm = props => {
             value={form.input}
             name='input'
             onChange={handleInputChange}
+            error={inputError}
+            helperText={inputErrorMessage}
             label='E-mail ou Nickname'
             variant='outlined'
             margin='normal'
@@ -43,6 +74,8 @@ const LoginForm = props => {
             value={form.password}
             name='password'
             onChange={handleInputChange}
+            error={passwordError}
+            helperText={passwordErrorMessage}
             label='Senha'
             variant='outlined'
             margin='normal'
