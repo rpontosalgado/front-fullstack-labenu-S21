@@ -29,8 +29,6 @@ const LoginForm = props => {
 
     const isValid = element.checkValidity();
 
-    element.reportValidity();
-
     if (isValid) {
       login(
         form,
@@ -60,10 +58,10 @@ const LoginForm = props => {
           <TextField 
             value={form.input}
             name='input'
+            label='E-mail ou Nickname'
             onChange={handleInputChange}
             error={inputError}
             helperText={inputErrorMessage}
-            label='E-mail ou Nickname'
             variant='outlined'
             margin='normal'
             fullWidth
@@ -73,10 +71,10 @@ const LoginForm = props => {
           <TextField
             value={form.password}
             name='password'
+            label='Senha'
             onChange={handleInputChange}
             error={passwordError}
             helperText={passwordErrorMessage}
-            label='Senha'
             variant='outlined'
             margin='normal'
             type='password'
@@ -92,7 +90,7 @@ const LoginForm = props => {
           fullWidth
           onClick={onClickLogin}
         >
-          {isLoading ? <CircularProgress color="primary" size={26}/> : "Fazer Login"}
+          {isLoading ? <CircularProgress color="primary" size={26} /> : "Fazer Login"}
         </Button>
       </LoginFormContainer>
     </form>

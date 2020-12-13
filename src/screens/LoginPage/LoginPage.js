@@ -11,7 +11,7 @@ import { goToSignup } from "../../routes/Coordinator";
 const LoginPage = props => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState("Blablabla");
+  const [message, setMessage] = useState("");
 
   useUnprotectedPage();
 
