@@ -3,22 +3,27 @@ import styled from "styled-components";
 
 export const MusicListContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px;
 `
 
 export const MusicCardContainer = styled(Card)`
-  width: 80vw;
-  max-width: 800px;
-  margin: 10px;
+  width: 320px;
+  cursor: pointer;
 `
 
 export const MusicInfoWrapper = styled(CardContent)`
-  padding: 0.5rem;
+  :last-child {
+    padding-bottom: 1rem;
+  }
 `
 
 export const GenresContainer = styled.div`
+  padding-top: 0.65em;
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
 `
