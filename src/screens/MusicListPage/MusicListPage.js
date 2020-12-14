@@ -3,8 +3,9 @@ import useGetUserMusic from "../../hooks/useRequestData";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
-import { CreateMusicButton, MusicListContainer } from "./styled";
-import Icon from "@mdi/react";
+import { CreateMusicButton, CreateMusicIcon, MusicListContainer } from "./styled";
+import { mdiMusicNotePlus } from "@mdi/js";
+import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 
 const MusicListPage = props => {
   useProtectedPage();
@@ -39,11 +40,15 @@ const MusicListPage = props => {
   return (
     <MusicListContainer>
       {music ? RenderMusicList() : <Loading />}
-      <CreateMusicButton
-        onClick={handleClickOpen}
-      >
-        <Icon path={mdiMusicNotePlus} />
+      <CreateMusicButton color="primary" onClick={handleClickOpen} >
+        <CreateMusicIcon path={mdiMusicNotePlus} />
       </CreateMusicButton>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Criar nova música</DialogTitle>
+        <DialogContent>
+          BlaBla
+        </DialogContent>
+      </Dialog>
     </MusicListContainer>
   );
 }

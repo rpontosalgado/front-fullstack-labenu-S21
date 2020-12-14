@@ -35,6 +35,8 @@ export const CreateMusicButton = styled(Fab)`
   bottom: 1rem;
 `
 
-// export const CreateMusicIcon = styled(Icon)`
+export const CreateMusicIcon = styled(Icon)`
+  display: block;
+  height: 2rem;
+`
 
-// `
