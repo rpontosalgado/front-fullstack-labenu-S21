@@ -3,7 +3,8 @@ import useGetUserMusic from "../../hooks/useRequestData";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
-import { MusicListContainer } from "./styled";
+import { CreateMusicButton, MusicListContainer } from "./styled";
+import Icon from "@mdi/react";
 
 const MusicListPage = props => {
   useProtectedPage();
@@ -38,7 +39,11 @@ const MusicListPage = props => {
   return (
     <MusicListContainer>
       {music ? RenderMusicList() : <Loading />}
-      
+      <CreateMusicButton
+        onClick={handleClickOpen}
+      >
+        <Icon path={mdiMusicNotePlus} />
+      </CreateMusicButton>
     </MusicListContainer>
   );
 }

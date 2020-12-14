@@ -1,4 +1,5 @@
 import { Card, CardContent, Fab } from "@material-ui/core";
+import Icon from "@mdi/react";
 import styled from "styled-components";
 
 export const MusicListContainer = styled.div`
@@ -33,3 +34,7 @@ export const CreateMusicButton = styled(Fab)`
   right: 1rem;
   bottom: 1rem;
 `
+
+// export const CreateMusicIcon = styled(Icon)`
+
+// `

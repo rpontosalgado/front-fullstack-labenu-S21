@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, CircularProgress, TextField } from "@material-ui/core";
+import { Button, CircularProgress, IconButton, InputAdornment, TextField } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { login } from "../../services/user";
 import { InputsContainer, LoginFormContainer } from "./styled";
 import useForm from "../../hooks/useForm";
@@ -10,12 +11,20 @@ const LoginForm = props => {
   
   const history = useHistory();
   
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [inputError, setInputError] = useState(false);
   const [inputErrorMessage, setInputErrorMessage] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const onClickLogin = event => {
     event.preventDefault();
@@ -77,7 +86,18 @@ const LoginForm = props => {
             helperText={passwordErrorMessage}
             variant='outlined'
             margin='normal'
-            type='password'
+            InputProps={{
+              endAdornment: <InputAdornment position="end">
+                <IconButton
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }}
+            type={showPassword ? 'text' : 'password'}
             fullWidth
             required
           />
@@ -90,7 +110,7 @@ const LoginForm = props => {
           fullWidth
           onClick={onClickLogin}
         >
-          {isLoading ? <CircularProgress color="primary" size={26} /> : "Fazer Login"}
+          {isLoading ? <CircularProgress color="inherit" size={26} /> : "Fazer Login"}
         </Button>
       </LoginFormContainer>
     </form>
