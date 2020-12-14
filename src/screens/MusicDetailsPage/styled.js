@@ -12,13 +12,17 @@ export const MusicDetailsContainer = styled.div`
 export const MusicDetailsCardContainer = styled(Card)`
   width: 80vw;
   max-width: 800px;
-  margin: 10px;
 `
 
 export const MusicDetailsInfoWrapper = styled(CardContent)`
-  padding: 0.5rem;
+  :last-child {
+    padding-bottom: 1rem;
+  }
 `
 
 export const MusicDetailsGenresContainer = styled.div`
+  padding-top: 0.65em;
   display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 `

@@ -34,7 +34,14 @@ export const login = (
     });
 }
 
-export const signup = (body, history, setButtonName, setIsLoading) => {
+export const signup = (
+  body,
+  history,
+  setButtonName,
+  setOpen,
+  setMessage,
+  setIsLoading
+) => {
   setIsLoading(true);
 
   axios.post(`${baseUrl}/user/signup`, body)
@@ -49,6 +56,18 @@ export const signup = (body, history, setButtonName, setIsLoading) => {
     })
     .catch(err => {
       setIsLoading(false);
-      alert(err.response.data.message)
+      setOpen(true);
+
+      switch (err.response.data.message) {
+        case "E-mail already in use":
+          setMessage("E-mail já cadastrado");
+          break;
+        case "Nickname already in use":
+          setMessage("Apelido já cadastrado");
+          break;
+        default:
+          setMessage(err.response.data.message);
+          break;
+      }
     });
 }
