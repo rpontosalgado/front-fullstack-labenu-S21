@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, Fab } from "@material-ui/core";
 import styled from "styled-components";
 
 export const MusicListContainer = styled.div`
@@ -26,4 +26,10 @@ export const GenresContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+`
+
+export const CreateMusicButton = styled(Fab)`
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
 `

@@ -27,9 +27,18 @@ const MusicListPage = props => {
     ))
   );
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <MusicListContainer>
       {music ? RenderMusicList() : <Loading />}
+      
     </MusicListContainer>
   );
 }
