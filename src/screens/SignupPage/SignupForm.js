@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, CircularProgress, Input, TextField } from "@material-ui/core";
+import { Button, CircularProgress, IconButton, Input, InputAdornment, TextField } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import { InputsContainer, SignupFormContainer } from "./styled";
 import { signup } from "../../services/user";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const SignupForm = props => {
   const history = useHistory();
@@ -15,6 +16,7 @@ const SignupForm = props => {
     password: ""
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
@@ -24,6 +26,14 @@ const SignupForm = props => {
   const [nicknameErrorMessage, setNicknameErrorMessage] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const onClickSignup = event => {
     event.preventDefault();
@@ -129,7 +139,18 @@ const SignupForm = props => {
             helperText={passwordErrorMessage}
             variant='outlined'
             margin='normal'
-            type='password'
+            InputProps={{
+              endAdornment: <InputAdornment position="end">
+                <IconButton
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }}
+            type={showPassword ? 'text' : 'password'}
             fullWidth
             required
           />
@@ -142,7 +163,7 @@ const SignupForm = props => {
           fullWidth
           onClick={onClickSignup}
         >
-          {isLoading ? <CircularProgress color="primary" size={26} /> : "Fazer Cadastro"}
+          {isLoading ? <CircularProgress color="inherit" size={26} /> : "Fazer Cadastro"}
         </Button>
       </SignupFormContainer>
     </form>
