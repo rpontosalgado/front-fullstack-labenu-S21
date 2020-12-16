@@ -10,9 +10,10 @@ const CreateMusicForm = props => {
     album: "",
     genre1: "",
     genre2: "",
-    genre3: "",
-    file: ""
+    genre3: ""
   });
+
+  const [file, setFile] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [titleError, setTitleError] = useState(false);
@@ -23,6 +24,17 @@ const CreateMusicForm = props => {
   const [genresErrorMessage, setGenresErrorMessage] = useState("");
   const [fileError, setFileError] = useState(false);
   const [fileErrorMessage, setFileErrorMessage] = useState("");
+
+
+  const selectAndConvertFile = event => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = () => {
+      setFile(reader.result);
+    }
+  }
 
   const onClickCreateMusic = event => {
     event.preventDefault();
@@ -43,9 +55,12 @@ const CreateMusicForm = props => {
       const body = {
         title: form.title,
         album: form.album,
-        genres: [form.genre1, form.genre2, form.genre3],
-        file: form.file
+        genres: [form.genre1],
+        file: file
       }
+
+      form.genre2 && body.genres.push(form.genre2);
+      form.genre3 && body.genres.push(form.genre3);
 
       createMusic(
         body,
@@ -71,7 +86,7 @@ const CreateMusicForm = props => {
         setGenresErrorMessage("Insira pelo menos um gênero");
       }
       
-      if (!form.file) {
+      if (!file) {
         setFileError(true);
         setFileErrorMessage("É preciso inserir um arquivo");
       }
@@ -150,11 +165,12 @@ const CreateMusicForm = props => {
         </GenresInputsWrapper>
       </GenresInputsContainer>
       <TextField
-        value={form.file}
-        name='file'
         type='file'
+        // inputProps={{
+        //   accept: "audio/*"
+        // }}
         // label='Arquivo'
-        onChange={handleInputChange}
+        onChange={selectAndConvertFile}
         error={fileError}
         helperText={fileErrorMessage}
         variant='outlined'

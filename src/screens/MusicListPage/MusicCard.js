@@ -9,8 +9,8 @@ const MusicCard = props => {
   const history = useHistory();
 
   const RenderGenresList = genres => (
-    genres.map((genre, i) => (
-      <Chip key={i+1} label={genre} size="small" color="primary" />
+    genres.map((genre) => (
+      <Chip key={genre} label={genre} size="small" color="primary" />
     ))
   );
   
@@ -22,9 +22,7 @@ const MusicCard = props => {
         <Typography variant="body2" color="textSecondary" >
           {timePassed(props.date)}
         </Typography>
-        <Typography variant="caption" color="textSecondary" >
-          {props.file}
-        </Typography>
+        <img src={props.file}/>
         <Typography variant="h6" component="h3" align="center" >
           {props.title}
         </Typography>
