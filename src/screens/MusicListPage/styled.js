@@ -50,7 +50,11 @@ export const GenresInputsContainer = styled.div`
 `
 
 export const GenresInputsTitle = styled.div`
-  padding: 0 0.65rem;
+  padding: 1rem 0.65rem 0;
+
+  @media(max-width: 400px) {
+    padding: 0 0.65rem;
+  }
 `
 
 export const GenresInputsWrapper = styled.div`

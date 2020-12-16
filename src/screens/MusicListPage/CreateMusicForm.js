@@ -152,7 +152,8 @@ const CreateMusicForm = props => {
       <TextField
         value={form.file}
         name='file'
-        label='Arquivo'
+        type='file'
+        // label='Arquivo'
         onChange={handleInputChange}
         error={fileError}
         helperText={fileErrorMessage}
