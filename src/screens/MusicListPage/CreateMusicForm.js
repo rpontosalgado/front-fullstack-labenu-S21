@@ -1,8 +1,9 @@
 import { Button, CircularProgress, DialogActions, TextField, Typography } from "@material-ui/core";
+import { mdiFileMusic } from "@mdi/js";
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { createMusic } from "../../services/music";
-import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper } from "./styled";
+import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper, UploadedTrack, UploadedTrackError, UploadTrackIcon } from "./styled";
 
 const CreateMusicForm = props => {
   const [form, handleInputChange] = useForm({
@@ -14,6 +15,7 @@ const CreateMusicForm = props => {
   });
 
   const [file, setFile] = useState("");
+  const [url, setUrl] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [titleError, setTitleError] = useState(false);
@@ -27,12 +29,14 @@ const CreateMusicForm = props => {
 
 
   const selectAndConvertFile = event => {
+    setFile(event.target.files[0])
+
     const reader = new FileReader();
 
     reader.readAsDataURL(event.target.files[0]);
 
     reader.onload = () => {
-      setFile(reader.result);
+      setUrl(reader.result);
     }
   }
 
@@ -56,7 +60,7 @@ const CreateMusicForm = props => {
         title: form.title,
         album: form.album,
         genres: [form.genre1],
-        file: file
+        file: url
       }
 
       form.genre2 && body.genres.push(form.genre2);
@@ -164,20 +168,37 @@ const CreateMusicForm = props => {
           />
         </GenresInputsWrapper>
       </GenresInputsContainer>
-      <TextField
-        type='file'
-        // inputProps={{
-        //   accept: "audio/*"
-        // }}
-        // label='Arquivo'
-        onChange={selectAndConvertFile}
-        error={fileError}
-        helperText={fileErrorMessage}
-        variant='outlined'
-        margin='dense'
-        fullWidth
-        required
-      />
+      <label htmlFor="upload-track">
+        <input 
+          hidden
+          id="upload-track"
+          name="upload-track"
+          type="file"
+          accept= "audio/*"
+          onChange={selectAndConvertFile}
+          required
+        />
+        <Button
+          color={fileError ? "secondary" : "primary"}
+          variant="contained"
+          component="span"
+        >
+          <UploadTrackIcon path={mdiFileMusic} />
+        </Button>
+        <UploadedTrack
+          component="span"
+          color={fileError ? "error" : "textPrimary"}
+        >
+          {file.name || "Selecionar arquivo"}
+        </UploadedTrack>
+        <UploadedTrackError
+            variant="caption"
+            component="p"
+            color="error"
+          >
+            {fileErrorMessage || undefined}
+          </UploadedTrackError>
+      </label>
       <DialogActions>
         <Button onClick={props.handleCloseCreateMusic} color="secondary" >
           Cancel

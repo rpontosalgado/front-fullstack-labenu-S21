@@ -67,3 +67,17 @@ export const GenresInputsWrapper = styled.div`
     margin-left: 20%;
   }
 `
+
+export const UploadTrackIcon = styled(Icon)`
+  display: block;
+  height: 2rem;
+`
+
+export const UploadedTrack = styled(Typography)`
+  margin-left: 0.65rem;
+`
+
+export const UploadedTrackError = styled(Typography)`
+  margin-top: 0.65rem;
+  margin-left: 0.65rem;
+`
