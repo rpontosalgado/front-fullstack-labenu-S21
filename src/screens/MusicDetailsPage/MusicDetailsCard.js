@@ -1,6 +1,6 @@
 import React from "react";
 import { Chip, Typography } from "@material-ui/core";
-import { MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
+import { AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
 import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {
@@ -17,14 +17,32 @@ const MusicDetailsCard = props => {
         <Typography variant="body2" color="textSecondary" >
           {timePassed(props.date)}
         </Typography>
-        <Typography variant="caption" color="textSecondary" >
-          {props.file}
-        </Typography>
-        <Typography variant="h6" component="h3" align="center" >
+        <AudioPlayer controls preload="auto">
+          <source src={props.file}/>
+          Seu navegador não suporta o elemento de audio
+        </AudioPlayer>
+        <Typography
+          variant="h6"
+          component="h3"
+          align="center"
+          gutterBottom
+        >
           {props.title}
         </Typography>
-        <Typography align="center" >
-          {props.authorName} · {props.album}
+        <Typography
+          variant="body2"
+          component="p"
+          align="center"
+        >
+          {props.authorName}
+        </Typography>
+        <Typography
+          variant="body1"
+          component="h4"
+          align="center"
+          gutterBottom
+        >
+          {props.album}
         </Typography>
         <MusicDetailsGenresContainer>
           {RenderGenresList(props.genres)}
