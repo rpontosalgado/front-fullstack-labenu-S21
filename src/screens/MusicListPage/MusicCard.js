@@ -1,9 +1,9 @@
 import React from "react";
-import { Chip, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { Chip, Typography } from "@material-ui/core";
 import { goToMusicDetails } from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
-import { GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
+import { AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
 
 const MusicCard = props => {
   const history = useHistory();
@@ -15,19 +15,39 @@ const MusicCard = props => {
   );
   
   return (
-    <MusicCardContainer>
-      <MusicInfoWrapper
-        onClick={() => goToMusicDetails(history, props.musicId)}
-      >
+    <MusicCardContainer
+      onClick={() => goToMusicDetails(history, props.musicId)}
+    >
+      <MusicInfoWrapper>
         <Typography variant="body2" color="textSecondary" >
           {timePassed(props.date)}
         </Typography>
-        <img src={props.file}/>
-        <Typography variant="h6" component="h3" align="center" >
+        <AudioPlayer controls preload="auto">
+          <source src={props.file}/>
+          Seu navegador não suporta o elemento de audio
+        </AudioPlayer>
+        <Typography
+          variant="h6"
+          component="h3"
+          align="center"
+          gutterBottom
+        >
           {props.title}
         </Typography>
-        <Typography align="center" gutterBottom>
-          {props.authorName} · {props.album}
+        <Typography
+          variant="body2"
+          component="p"
+          align="center"
+        >
+          {props.authorName}
+        </Typography>
+        <Typography
+          variant="body1"
+          component="h4"
+          align="center"
+          gutterBottom
+        >
+          {props.album}
         </Typography>
         <GenresContainer>
           {RenderGenresList(props.genres)}

@@ -22,6 +22,11 @@ export const MusicInfoWrapper = styled(CardContent)`
   }
 `
 
+export const AudioPlayer = styled.audio`
+  width: 100%;
+  margin: 2rem 0;
+`
+
 export const GenresContainer = styled.div`
   padding-top: 0.65em;
   display: flex;
