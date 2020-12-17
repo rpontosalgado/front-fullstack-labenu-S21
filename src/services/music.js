@@ -38,12 +38,14 @@ export const createMusic = (
     .catch(err => {
       setIsLoading(false);
 
-      switch (err.response.data.message) {
-        case "This album already has a music with this title":
+      throwError("Este album já tem uma música com este título");
+
+      switch (err.response.status) {
+        case 409:
           throwError("Este album já tem uma música com este título");
           break;
-        case "This file has already been uploaded":
-          throwError("Já existe uma música com o mesmo arquivo");
+        case 413:
+          throwError("Arquivo maior do que tamanho máximo permitido");
           break;
         default:
           throwError(err.response.data.message)

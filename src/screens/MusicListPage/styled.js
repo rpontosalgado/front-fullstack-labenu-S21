@@ -22,6 +22,11 @@ export const MusicInfoWrapper = styled(CardContent)`
   }
 `
 
+export const AudioPlayer = styled.audio`
+  width: 100%;
+  margin: 2rem 0;
+`
+
 export const GenresContainer = styled.div`
   padding-top: 0.65em;
   display: flex;
@@ -50,11 +55,29 @@ export const GenresInputsContainer = styled.div`
 `
 
 export const GenresInputsTitle = styled.div`
-  padding: 0 0.65rem;
+  padding: 1rem 0.65rem 0;
+
+  @media(max-width: 400px) {
+    padding: 0 0.65rem;
+  }
 `
 
 export const GenresInputsWrapper = styled.div`
   @media(max-width: 400px) {
     margin-left: 20%;
   }
+`
+
+export const UploadTrackIcon = styled(Icon)`
+  display: block;
+  height: 2rem;
+`
+
+export const UploadedTrack = styled(Typography)`
+  margin-left: 0.65rem;
+`
+
+export const UploadedTrackError = styled(Typography)`
+  margin-top: 0.65rem;
+  margin-left: 0.65rem;
 `

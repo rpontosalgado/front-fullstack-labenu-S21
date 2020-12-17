@@ -20,6 +20,11 @@ export const MusicDetailsInfoWrapper = styled(CardContent)`
   }
 `
 
+export const AudioPlayer = styled.audio`
+  width: 100%;
+  margin: 2rem 0;
+`
+
 export const MusicDetailsGenresContainer = styled.div`
   padding-top: 0.65em;
   display: flex;

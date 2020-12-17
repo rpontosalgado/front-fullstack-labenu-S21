@@ -1,8 +1,9 @@
 import { Button, CircularProgress, DialogActions, TextField, Typography } from "@material-ui/core";
+import { mdiFileMusic } from "@mdi/js";
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { createMusic } from "../../services/music";
-import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper } from "./styled";
+import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper, UploadedTrack, UploadedTrackError, UploadTrackIcon } from "./styled";
 
 const CreateMusicForm = props => {
   const [form, handleInputChange] = useForm({
@@ -10,9 +11,11 @@ const CreateMusicForm = props => {
     album: "",
     genre1: "",
     genre2: "",
-    genre3: "",
-    file: ""
+    genre3: ""
   });
+
+  const [file, setFile] = useState("");
+  const [url, setUrl] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [titleError, setTitleError] = useState(false);
@@ -23,6 +26,19 @@ const CreateMusicForm = props => {
   const [genresErrorMessage, setGenresErrorMessage] = useState("");
   const [fileError, setFileError] = useState(false);
   const [fileErrorMessage, setFileErrorMessage] = useState("");
+
+
+  const selectAndConvertFile = event => {
+    setFile(event.target.files[0])
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = () => {
+      setUrl(reader.result);
+    }
+  }
 
   const onClickCreateMusic = event => {
     event.preventDefault();
@@ -43,9 +59,12 @@ const CreateMusicForm = props => {
       const body = {
         title: form.title,
         album: form.album,
-        genres: [form.genre1, form.genre2, form.genre3],
-        file: form.file
+        genres: [form.genre1],
+        file: url
       }
+
+      form.genre2 && body.genres.push(form.genre2);
+      form.genre3 && body.genres.push(form.genre3);
 
       createMusic(
         body,
@@ -71,7 +90,7 @@ const CreateMusicForm = props => {
         setGenresErrorMessage("Insira pelo menos um gênero");
       }
       
-      if (!form.file) {
+      if (!file) {
         setFileError(true);
         setFileErrorMessage("É preciso inserir um arquivo");
       }
@@ -149,18 +168,37 @@ const CreateMusicForm = props => {
           />
         </GenresInputsWrapper>
       </GenresInputsContainer>
-      <TextField
-        value={form.file}
-        name='file'
-        label='Arquivo'
-        onChange={handleInputChange}
-        error={fileError}
-        helperText={fileErrorMessage}
-        variant='outlined'
-        margin='dense'
-        fullWidth
-        required
-      />
+      <label htmlFor="upload-track">
+        <input 
+          hidden
+          id="upload-track"
+          name="upload-track"
+          type="file"
+          accept= "audio/*"
+          onChange={selectAndConvertFile}
+          required
+        />
+        <Button
+          color={fileError ? "secondary" : "primary"}
+          variant="contained"
+          component="span"
+        >
+          <UploadTrackIcon path={mdiFileMusic} />
+        </Button>
+        <UploadedTrack
+          component="span"
+          color={fileError ? "error" : "textPrimary"}
+        >
+          {file.name || "Selecionar arquivo"}
+        </UploadedTrack>
+        <UploadedTrackError
+            variant="caption"
+            component="p"
+            color="error"
+          >
+            {fileErrorMessage || undefined}
+          </UploadedTrackError>
+      </label>
       <DialogActions>
         <Button onClick={props.handleCloseCreateMusic} color="secondary" >
           Cancel
