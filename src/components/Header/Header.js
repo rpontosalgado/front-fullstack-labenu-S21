@@ -6,7 +6,9 @@ import { ButtonContainer, HeaderButton, HeaderTitle, LogoIcon, LogTitle } from "
 import { mdiSharkFin } from '@mdi/js'; 
 
 const Header = props => {
-  const {buttonName, setButtonName, setOpenNavBar, token} = props;
+  const {buttonName, setButtonName, setOpenNavBar} = props;
+
+  const token = localStorage.getItem("token");
   const history = useHistory();
 
   const NavMenuAction = () => {

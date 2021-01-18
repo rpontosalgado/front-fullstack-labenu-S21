@@ -22,7 +22,6 @@ function App() {
         buttonName={buttonName}
         setButtonName={setButtonName}
         setOpenNavBar={setOpenNavBar}
-        token={token}
       />
       <Navbar openNavBar={openNavBar} setOpenNavBar={setOpenNavBar} />
       <InnerScreenContainer>

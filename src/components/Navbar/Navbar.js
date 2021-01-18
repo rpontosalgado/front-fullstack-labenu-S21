@@ -1,13 +1,33 @@
 import React from "react";
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { MusicNote, QueueMusic } from "@material-ui/icons";
+import { goToMusicList } from "../../routes/Coordinator";
 
 const Navbar = props => {
   const {openNavBar, setOpenNavBar} = props;
 
+  const history = useHistory();
+
   const handleCloseDrawer = (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
+    }
+
+    setOpenNavBar(false);
+  }
+
+  const handleNavItemClick = (history, screen) => {
+    switch (screen) {
+      case "music":
+        goToMusicList(history);
+        break;
+      
+      case "playlist":
+        goToPlaylists(history);
+        break;
+    
+      default:
+        break;
     }
 
     setOpenNavBar(false);
@@ -18,7 +38,7 @@ const Navbar = props => {
       <List component="nav">
         <ListItem
           button
-          // onClick={() => handleClick()}
+          onClick={() => handleNavItemClick(history, "music")}
         >
           <ListItemIcon>
             <MusicNote />
@@ -27,7 +47,7 @@ const Navbar = props => {
         </ListItem>
         <ListItem
           button
-          // onClick={() => handleClick()}
+          onClick={() => handleNavItemClick(history, "playlist")}
         >
           <ListItemIcon>
             <QueueMusic />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useGetUserMusic from "../../hooks/useRequestData";
+import useRequestData from "../../hooks/useRequestData";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
@@ -9,14 +9,16 @@ import { Dialog, DialogContent, DialogTitle, Snackbar } from "@material-ui/core"
 import CreateMusicForm from "./CreateMusicForm";
 import { Alert } from "@material-ui/lab";
 
-const MusicListPage = props => {
+const MusicListPage = () => {
   useProtectedPage();
+  
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
   const [createMusicError, setCreateMusicError] = useState(false);
   const [createMusicErrorMessage, setCreateMusicErrorMessage] = useState("");
-  const [list, updateList] = useGetUserMusic({}, "/music");
+  
+  const [data, updateData] = useRequestData({}, "/music");
 
-  const { music } = list;
+  const { music } = data;
 
   const RenderMusicList = () => (
     music.sort((a, b) => b.date - a.date).map(item => (
@@ -67,9 +69,9 @@ const MusicListPage = props => {
         <DialogTitle>Criar nova música</DialogTitle>
         <DialogContent>
           <CreateMusicForm
-            handleCloseCreateMusic={handleCloseCreateMusic}
-            updateList={updateList}
-            handleCreateMusicError={handleCreateMusicError}
+            close={handleCloseCreateMusic}
+            updateMusic={updateData}
+            error={handleCreateMusicError}
           />
         </DialogContent>
       </Dialog>

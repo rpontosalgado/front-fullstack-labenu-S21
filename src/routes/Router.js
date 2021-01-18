@@ -5,6 +5,7 @@ import LoginPage from "../screens/LoginPage/LoginPage";
 import SignupPage from "../screens/SignupPage/SignupPage";
 import MusicListPage from "../screens/MusicListPage/MusicListPage";
 import MusicDetailsPage from "../screens/MusicDetailsPage/MusicDetailsPage";
+import PlaylistsPage from "../screens/PlaylistsPage/PlaylistsPage";
 
 const Router = props => {
   return (
@@ -20,6 +21,12 @@ const Router = props => {
       </Route>
       <Route exact path={"/music/:id"}>
         <MusicDetailsPage />
+      </Route>
+      <Route exact path={"/playlist"}>
+        <PlaylistsPage />
+      </Route>
+      <Route exact path={"/playlist/:id"}>
+        <PlaylistDetailsPage />
       </Route>
       <Route>
         <ErrorPage />

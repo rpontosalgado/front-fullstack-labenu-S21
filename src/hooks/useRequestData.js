@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { getUserMusic } from "../services/music";
+import { getData } from "../services/data";
 
-const useGetUserMusic = (initialState, endpoint) => {
+const useRequestData = (initialState, endpoint) => {
   const [data, setData] = useState(initialState);
 
-  useEffect(() => getUserMusic(endpoint, setData), [endpoint]);
+  useEffect(() => getData(endpoint, setData), [endpoint]);
 
-  const updateData = () => getUserMusic(endpoint, setData);
+  const updateData = () => getData(endpoint, setData);
 
   return [data, updateData];
 }
 
-export default useGetUserMusic;
+export default useRequestData;

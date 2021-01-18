@@ -13,3 +13,11 @@ export const goToMusicList = (history) => {
 export const goToMusicDetails = (history, id) => {
   history.push(`/music/${id}`)
 }
+
+export const goToPlaylists = (history) => {
+  history.push("/playlist")
+}
+
+export const goToPlaylistDetails = (history, id) => {
+  history.push("/playlist/${id}")
+}
