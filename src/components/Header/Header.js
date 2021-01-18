@@ -6,16 +6,24 @@ import { ButtonContainer, HeaderButton, HeaderTitle, LogoIcon, LogTitle } from "
 import { mdiSharkFin } from '@mdi/js'; 
 
 const Header = props => {
-  const {buttonName, setButtonName} = props;
+  const {buttonName, setButtonName, setOpenNavBar} = props;
+
+  const token = localStorage.getItem("token");
   const history = useHistory();
+
+  const NavMenuAction = () => {
+    if (token) {
+      setOpenNavBar(true);
+    } else {
+      goToLogin(history);
+    }
+  }
 
   const logout = () => {
     localStorage.removeItem("token");
   }
 
   const HeaderAction = () => {
-    const token = localStorage.getItem("token");
-    
     if (token) {
       logout();
       setButtonName("Login");
@@ -28,7 +36,7 @@ const Header = props => {
     <AppBar>
       <Toolbar>
         <ButtonContainer>
-          <HeaderButton color="inherit" onClick={()=>goToMusicList(history)}>
+          <HeaderButton color="inherit" onClick={NavMenuAction}>
             <LogoIcon path={mdiSharkFin} />
             <HeaderTitle variant="h1" >SoundEnu</HeaderTitle>
           </HeaderButton>

@@ -15,9 +15,7 @@ const MusicCard = props => {
   );
   
   return (
-    <MusicCardContainer
-      onClick={() => goToMusicDetails(history, props.musicId)}
-    >
+    <MusicCardContainer>
       <MusicInfoWrapper>
         <Typography variant="body2" color="textSecondary" >
           {timePassed(props.date)}
@@ -31,6 +29,8 @@ const MusicCard = props => {
           component="h3"
           align="center"
           gutterBottom
+          style={{cursor: "pointer"}}
+          onClick={() => goToMusicDetails(history, props.musicId)}
         >
           {props.title}
         </Typography>

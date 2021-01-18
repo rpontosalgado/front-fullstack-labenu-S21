@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { Card, CardContent, Fab, Typography } from "@material-ui/core";
 import Icon from "@mdi/react";
-import styled from "styled-components";
 
 export const MusicListContainer = styled.div`
   display: flex;
@@ -13,7 +13,6 @@ export const MusicListContainer = styled.div`
 
 export const MusicCardContainer = styled(Card)`
   width: 320px;
-  cursor: pointer;
 `
 
 export const MusicInfoWrapper = styled(CardContent)`

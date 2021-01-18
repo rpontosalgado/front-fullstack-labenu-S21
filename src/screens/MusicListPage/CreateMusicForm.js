@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { Button, CircularProgress, DialogActions, TextField, Typography } from "@material-ui/core";
 import { mdiFileMusic } from "@mdi/js";
-import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { createMusic } from "../../services/music";
 import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper, UploadedTrack, UploadedTrackError, UploadTrackIcon } from "./styled";
@@ -29,7 +29,7 @@ const CreateMusicForm = props => {
 
 
   const selectAndConvertFile = event => {
-    setFile(event.target.files[0])
+    setFile(event.target.files[0]);
 
     const reader = new FileReader();
 
@@ -40,7 +40,7 @@ const CreateMusicForm = props => {
     }
   }
 
-  const onClickCreateMusic = event => {
+  const handleCreateMusicClick = event => {
     event.preventDefault();
 
     setTitleError(false);
@@ -69,9 +69,9 @@ const CreateMusicForm = props => {
       createMusic(
         body,
         "/music",
-        props.handleCloseCreateMusic,
-        props.updateList,
-        props.handleCreateMusicError,
+        props.close,
+        props.updateMusic,
+        props.error,
         setIsLoading
       );
     } else {
@@ -174,7 +174,7 @@ const CreateMusicForm = props => {
           id="upload-track"
           name="upload-track"
           type="file"
-          accept= "audio/*"
+          accept="audio/*"
           onChange={selectAndConvertFile}
           required
         />
@@ -200,7 +200,7 @@ const CreateMusicForm = props => {
           </UploadedTrackError>
       </label>
       <DialogActions>
-        <Button onClick={props.handleCloseCreateMusic} color="secondary" >
+        <Button onClick={props.close} color="secondary" >
           Cancel
         </Button>
         <Button
@@ -208,7 +208,7 @@ const CreateMusicForm = props => {
           variant="contained"
           type="submit"
           disabled={isLoading}
-          onClick={onClickCreateMusic}
+          onClick={handleCreateMusicClick}
         >
           {isLoading ? <CircularProgress color="primary" size={26} /> : "Criar"}
         </Button>
