@@ -13,7 +13,6 @@ export const MusicListContainer = styled.div`
 
 export const MusicCardContainer = styled(Card)`
   width: 320px;
-  cursor: pointer;
 `
 
 export const MusicInfoWrapper = styled(CardContent)`
