@@ -3,6 +3,21 @@ import { Card, Fab } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
 import Icon from "@mdi/react";
 
+export const PlaylistsPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const PlaylistsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px;
+`
+
 export const CreatePlaylistButton = styled(Fab)`
   position: fixed;
   right: 1rem;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Dialog, DialogContent, DialogTitle, Divider, Snackbar, Typography } from "@material-ui/core";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import { CreatePlaylistButton, CreatePlaylistIcon } from "./styled";
+import { CreatePlaylistButton, CreatePlaylistIcon, PlaylistsContainer, PlaylistsPageContainer } from "./styled";
 import useRequestData from "../../hooks/useRequestData";
 import { Alert } from "@material-ui/lab";
 import Loading from "../../components/Loading/Loading";
@@ -50,12 +50,12 @@ const PlaylistsPage = () => {
   }
 
   return (
-    <div>
+    <PlaylistsPageContainer>
       <Typography variant="h2">Playlists</Typography>
       <Divider/>
-      <div>
+      <PlaylistsContainer>
         {playlists ? RenderPlaylists() : <Loading />}
-      </div>
+      </PlaylistsContainer>
       <CreatePlaylistButton
         color="primary"
         onClick={handleClickOpenCreatePlaylist}
@@ -81,7 +81,7 @@ const PlaylistsPage = () => {
           {createPlaylistErrorMessage}
         </Alert>
       </Snackbar>
-    </div>
+    </PlaylistsPageContainer>
   );
 }
 
