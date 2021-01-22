@@ -24,6 +24,12 @@ const PlaylistDetailsPage = () => {
     file: ""
   });
 
+  const [alert, setAlert] = useState({
+    open: false,
+    severity: "",
+    message: ""
+  });
+
   const handleClickSong = (title, album, artist, file) => {
     setSong({title, album, artist, file});
     
@@ -37,9 +43,26 @@ const PlaylistDetailsPage = () => {
   const handleDeleteClick = (musicId) => {
     deleteMusicFromPlaylist(
       `/playlist/${id}/music/${musicId}`,
-      updateDetails
+      updateDetails,
+      handleAlert
     )
   }
+
+  const handleAlert = (severity, message) => {
+    setAlert({
+      open: true,
+      severity,
+      message
+    });
+  };
+
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setAlert(false);
+  };
 
   const playlistImage = (src) => (
     <PlaylistImage
@@ -145,6 +168,10 @@ const PlaylistDetailsPage = () => {
         </Typography>
         </DialogContent>
       </Dialog>
+      <AlertPop
+        close={handleCloseAlert}
+        alert={alert}
+      />
     </PlaylistDetailsPageContainer>
   )
 

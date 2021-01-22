@@ -75,12 +75,17 @@ export const addMusicToPlaylist = (body, endpoint, closeMenu, throwAlert) => {
     });
 }
 
-export const deleteMusicFromPlaylist = (endpoint, update) => {
+export const deleteMusicFromPlaylist = (endpoint, update, alert) => {
   axios.delete(`${baseUrl}${endpoint}`, {
     headers: {
       Authorization: localStorage.getItem("token")
     }
   })
-    .then(() => update())
-    .catch(err => console.log(err));
+    .then(() => {
+      update();
+      alert("success", "Música removida da playlist");
+    })
+    .catch(err => {
+      alert("error", err.response.message);
+    });
 }
