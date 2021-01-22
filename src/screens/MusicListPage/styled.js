@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, CardContent, Fab, Typography } from "@material-ui/core";
+import { Card, CardContent, Fab, IconButton, Typography } from "@material-ui/core";
 import Icon from "@mdi/react";
 
 export const MusicListContainer = styled.div`
@@ -79,4 +79,8 @@ export const UploadedTrack = styled(Typography)`
 export const UploadedTrackError = styled(Typography)`
   margin-top: 0.65rem;
   margin-left: 0.65rem;
+`
+
+export const AddToPlaylistButton = styled(IconButton)`
+  margin-left: auto;
 `

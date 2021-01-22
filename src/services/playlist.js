@@ -28,6 +28,16 @@ export const createPlaylist = (
     });
 }
 
+export const addMusicToPlaylist = (body, endpoint) => {
+  axios.put(`${baseUrl}${endpoint}`, body, {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(() => alert("Música adicionada a playlist"))
+    .catch(err => console.log(err));
+}
+
 export const deleteMusicFromPlaylist = (endpoint, update) => {
   axios.delete(`${baseUrl}${endpoint}`, {
     headers: {
