@@ -5,17 +5,19 @@ import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
 import { CreateMusicButton, CreateMusicIcon, MusicListContainer } from "./styled";
 import { mdiMusicNotePlus } from "@mdi/js";
-import { Dialog, DialogContent, DialogTitle, Snackbar } from "@material-ui/core";
+import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import CreateMusicForm from "./CreateMusicForm";
-import { Alert } from "@material-ui/lab";
+import AlertPop from "../../components/AlertPop/AlertPop";
 
 const MusicListPage = () => {
   useProtectedPage();
   
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
-  const [alert, setAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [severity, setSeverity] = useState("");
+  const [alert, setAlert] = useState({
+    open: false,
+    severity: "",
+    message: ""
+  });
   
   const [data, updateData] = useRequestData({}, "/music");
 
@@ -45,13 +47,15 @@ const MusicListPage = () => {
     setOpenCreateMusic(false);
   };
 
-  const handleAlert = (type, message) => {
-    setSeverity(type);
-    setAlertMessage(message);
-    setAlert(true);
+  const handleAlert = (severity, message) => {
+    setAlert({
+      open: true,
+      severity,
+      message
+    });
   };
 
-  const handleCloseCreateMusicAlert = (event, reason) => {
+  const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -78,15 +82,10 @@ const MusicListPage = () => {
           />
         </DialogContent>
       </Dialog>
-      <Snackbar 
-        open={alert}
-        autoHideDuration={6000}
-        onClose={handleCloseCreateMusicAlert}
-      >
-        <Alert onClose={handleCloseCreateMusicAlert} severity={severity}>
-          {alertMessage}
-        </Alert>
-      </Snackbar>
+      <AlertPop
+        close={handleCloseAlert}
+        alert={alert}
+      />
     </MusicListContainer>
   );
 }

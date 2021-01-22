@@ -48,6 +48,23 @@ const MusicDetailsCard = props => {
           {RenderGenresList(props.genres)}
         </MusicDetailsGenresContainer>
       </MusicDetailsInfoWrapper>
+      <CardActions>
+        <AddToPlaylistButton
+          aria-label="add to playlist"
+          aria-controls="playlists-menu"
+          aria-haspopup="true"
+          onClick={handleClickOpenPlaylistsMenu}
+        >
+          <PlaylistAdd />
+        </AddToPlaylistButton>
+        <AddToPlaylistMenu 
+          anchorEl={anchorEl}
+          open={open}
+          close={handleClosePlaylistsMenu}
+          musicId={props.musicId}
+          alert={props.alert}
+        />
+      </CardActions>
     </MusicDetailsCardContainer>
   );
 }
