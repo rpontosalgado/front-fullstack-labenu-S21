@@ -6,7 +6,7 @@ export const createPlaylist = (
   endpoint,
   closeDialog,
   updatePlaylists,
-  throwError,
+  throwAlert,
   setIsLoading
 ) => {
   setIsLoading(true);
@@ -19,12 +19,26 @@ export const createPlaylist = (
     .then(() => {
       closeDialog();
       updatePlaylists();
+      throwAlert("success", "Playlist criada!");
       setIsLoading(false);
     })
     .catch(err => {
       setIsLoading(false);
 
-      throwError("Não foi possível criar playlist")
+      switch (err.response.status) {
+        case 409:
+          throwAlert(
+            "error",
+            "Já foi criada uma playlist com este título"
+          );
+          break;
+        default:
+          throwAlert(
+            "error",
+            err.response.data.message
+          );
+          break;
+      }
     });
 }
 

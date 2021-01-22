@@ -53,7 +53,7 @@ const CreatePlaylistForm = props => {
         "/playlist",
         props.close,
         props.updatePlaylists,
-        props.error,
+        props.alert,
         setIsLoading
       );
     } else {

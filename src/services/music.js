@@ -25,11 +25,6 @@ export const createMusic = (
     .catch(err => {
       setIsLoading(false);
 
-      throwAlert(
-        "error",
-        "Este album já tem uma música com este título"
-      );
-
       switch (err.response.status) {
         case 409:
           throwAlert(

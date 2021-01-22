@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Dialog, DialogContent, DialogTitle, Divider, Snackbar, Typography } from "@material-ui/core";
+import { Dialog, DialogContent, DialogTitle, Divider, Typography } from "@material-ui/core";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { CreatePlaylistButton, CreatePlaylistIcon, PlaylistsContainer, PlaylistsPageContainer } from "./styled";
 import useRequestData from "../../hooks/useRequestData";
-import { Alert } from "@material-ui/lab";
 import Loading from "../../components/Loading/Loading";
 import PlaylistCard from "../PlaylistsPage/PlaylistCard";
 import CreatePlaylistForm from "./CreatePlaylistForm";
@@ -12,8 +11,11 @@ const PlaylistsPage = () => {
   useProtectedPage();
 
   const [openCreatePlaylist, setOpenCreatePlaylist] = useState(false);
-  const [createPlaylistError, setCreatePlaylistError] = useState(false);
-  const [createPlaylistErrorMessage, setCreatePlaylistErrorMessage] = useState("");
+  const [alert, setAlert] = useState({
+    open: false,
+    severity: "",
+    message: ""
+  });
 
   const [data, updateData] = useRequestData({}, "/playlist");
 
@@ -27,6 +29,7 @@ const PlaylistsPage = () => {
         title={playlist.title}
         subtitle={playlist.subtitle}
         creatorName={playlist.creatorName}
+        alert={handleAlert}
       />
     ))
   );
@@ -39,18 +42,21 @@ const PlaylistsPage = () => {
     setOpenCreatePlaylist(false);
   };
 
-  const handleCreatePlaylistError = message => {
-    setCreatePlaylistError(true);
-    setCreatePlaylistErrorMessage(message);
+  const handleAlert = (severity, message) => {
+    setAlert({
+      open: true,
+      severity,
+      message
+    });
   };
 
-  const handleCloseCreatePlaylistError = (event, reason) => {
+  const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
 
-    setCreatePlaylistError(false);
-  }
+    setAlert(false);
+  };
 
   return (
     <PlaylistsPageContainer>
@@ -71,19 +77,14 @@ const PlaylistsPage = () => {
           <CreatePlaylistForm
             close={handleCloseCreatePlaylist}
             updatePlaylists={updateData}
-            error={handleCreatePlaylistError}
+            alert={handleAlert}
           />
         </DialogContent>
       </Dialog>
-      <Snackbar
-        open={createPlaylistError}
-        autoHideDuration={6000}
-        onClose={handleCloseCreatePlaylistError}
-      >
-        <Alert onClose={handleCloseCreatePlaylistError} severity="error">
-          {createPlaylistErrorMessage}
-        </Alert>
-      </Snackbar>
+      <AlertPop
+        close={handleCloseAlert}
+        alert={alert}
+      />
     </PlaylistsPageContainer>
   );
 }
