@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { Card, Fab } from "@material-ui/core";
+import { Card, Fab, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
 import Icon from "@mdi/react";
 
-export const PlaylistsPageContainer = styled.div`
+export const PlaylistsPageContainer = styled.main`
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +44,7 @@ export const PlaceholderMedia = styled.div`
 
 export const PlaceholderIcon = styled(Icon)`
   display: block;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.54);
   width: 120px;
 `
 

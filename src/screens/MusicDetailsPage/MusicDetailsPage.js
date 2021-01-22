@@ -9,7 +9,7 @@ import { MusicDetailsContainer } from "./styled";
 const MusicDetailsPage = () => {
   useProtectedPage();
   const { id } = useParams();
-  const [details, updateDetails] = useRequestData({}, `/music/${id}`);
+  const [details] = useRequestData({}, `/music/${id}`);
 
   const { music } = details;
 

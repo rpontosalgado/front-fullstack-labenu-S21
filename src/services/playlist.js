@@ -27,3 +27,13 @@ export const createPlaylist = (
       throwError("Não foi possível criar playlist")
     });
 }
+
+export const deleteMusicFromPlaylist = (endpoint, update) => {
+  axios.delete(`${baseUrl}${endpoint}`, {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(() => update())
+    .catch(err => console.log(err));
+}

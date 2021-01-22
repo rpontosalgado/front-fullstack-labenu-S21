@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, Divider, Snackbar, Typography } from "@material-ui/core";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { CreatePlaylistButton, CreatePlaylistIcon, PlaylistsContainer, PlaylistsPageContainer } from "./styled";
 import useRequestData from "../../hooks/useRequestData";
 import { Alert } from "@material-ui/lab";
 import Loading from "../../components/Loading/Loading";
+import PlaylistCard from "../PlaylistsPage/PlaylistCard";
+import CreatePlaylistForm from "./CreatePlaylistForm";
 
 const PlaylistsPage = () => {
   useProtectedPage();
@@ -19,11 +21,12 @@ const PlaylistsPage = () => {
 
   const RenderPlaylists = () => (
     playlists.map(playlist => (
-      <PlaylistCard 
+      <PlaylistCard
         key={playlist.id}
         playlistId={playlist.id}
         title={playlist.title}
         subtitle={playlist.subtitle}
+        creatorName={playlist.creatorName}
       />
     ))
   );
@@ -51,7 +54,7 @@ const PlaylistsPage = () => {
 
   return (
     <PlaylistsPageContainer>
-      <Typography variant="h2">Playlists</Typography>
+      <Typography variant="h2" color="textPrimary" >Playlists</Typography>
       <Divider/>
       <PlaylistsContainer>
         {playlists ? RenderPlaylists() : <Loading />}
@@ -65,7 +68,7 @@ const PlaylistsPage = () => {
       <Dialog open={openCreatePlaylist} onClose={handleCloseCreatePlaylist}>
         <DialogTitle>Criar Playlist</DialogTitle>
         <DialogContent>
-          <CreatePlaylistFrom
+          <CreatePlaylistForm
             close={handleCloseCreatePlaylist}
             updatePlaylists={updateData}
             error={handleCreatePlaylistError}

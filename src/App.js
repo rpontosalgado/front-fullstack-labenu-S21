@@ -1,16 +1,18 @@
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
 import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import Router from "./routes/Router";
 import Navbar from './components/Navbar/Navbar';
+import { makeStyles } from '@material-ui/core';
 
-const InnerScreenContainer = styled.div`
-  padding-top: 64px;
-`
+const useStyles = makeStyles(theme => ({
+  offset: theme.mixins.toolbar
+}));
 
 function App() {
+  const classes = useStyles();
+
   const token = localStorage.getItem("token");
 
   const [buttonName, setButtonName] = useState(token ? "Logout" : "Login");
@@ -24,9 +26,10 @@ function App() {
         setOpenNavBar={setOpenNavBar}
       />
       <Navbar openNavBar={openNavBar} setOpenNavBar={setOpenNavBar} />
-      <InnerScreenContainer>
+      <div className={classes.offset} />
+      <main>
         <Router setButtonName={ setButtonName } />
-      </InnerScreenContainer>
+      </main>
     </BrowserRouter>
   );
 }

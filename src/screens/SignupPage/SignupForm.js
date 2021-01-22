@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, CircularProgress, IconButton, Input, InputAdornment, TextField } from "@material-ui/core";
+import { Button, CircularProgress, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import { InputsContainer, SignupFormContainer } from "./styled";
 import { signup } from "../../services/user";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { goToLogin, goToMusicList } from "../../routes/Coordinator";
+import { goToLogin } from "../../routes/Coordinator";
 import { AppBar, Button, Toolbar } from "@material-ui/core";
 import { ButtonContainer, HeaderButton, HeaderTitle, LogoIcon, LogTitle } from "./styled";
 import { mdiSharkFin } from '@mdi/js'; 

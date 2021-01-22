@@ -1,8 +1,9 @@
 import React from "react";
-import { CardActionArea, CardContent, CardMedia } from "@material-ui/core";
+import { CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { PlaceholderMedia, PlaylistCardContainer } from "./styled";
+import { PlaceholderIcon, PlaceholderMedia, PlaylistCardContainer } from "./styled";
 import { mdiSharkFin } from "@mdi/js";
+import { goToPlaylistDetails } from "../../routes/Coordinator";
 
 const PlaylistCard = props => {
   const history = useHistory();
@@ -11,7 +12,7 @@ const PlaylistCard = props => {
     <CardMedia
       image={src}
       title="Playlist Image"
-      height="240"
+      height="320"
     />
   )
 
@@ -26,18 +27,21 @@ const PlaylistCard = props => {
       <CardActionArea
         onClick={() => goToPlaylistDetails(history, props.playlistId)}
       >
-        {props.image ? playlistImage(props.image) : placeholderImage}
+        {props.image ? playlistImage(props.image) : placeholderImage()}
         <CardContent>
         <Typography
           variant="h6"
           component="h3"
           gutterBottom
+          noWrap
         >
           {props.title}
         </Typography>
         <Typography
           variant="body2"
           component="p"
+          gutterBottom
+          noWrap
         >
           {props.subtitle}
         </Typography>
@@ -45,8 +49,9 @@ const PlaylistCard = props => {
           variant="body1"
           component="h4"
           gutterBottom
+          noWrap
         >
-          {props.creatorName}
+          by {props.creatorName}
         </Typography>
         </CardContent>
       </CardActionArea>
