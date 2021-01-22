@@ -1,15 +1,28 @@
 import React from "react";
-import { Chip, Typography } from "@material-ui/core";
+import { CardActions, Chip, Typography } from "@material-ui/core";
+import { PlaylistAdd } from "@material-ui/icons";
 import { AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
+import AddToPlaylistMenu from "../../components/AddToPlaylistMenu/AddToPlaylistMenu";
+import { AddToPlaylistButton } from "../../components/AddToPlaylistMenu/styled";
 import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const RenderGenresList = genres => (
     genres.map((genre, i) => (
       <Chip key={i+1} label={genre} size="small" color="primary" />
     ))
   );
+
+  const handleClickOpenPlaylistsMenu = event => {
+    setAnchorEl(event.currentTarget);
+  }
+
+  const handleClosePlaylistsMenu = () => {
+    setAnchorEl(null);
+  }
 
   return (
     <MusicDetailsCardContainer>
