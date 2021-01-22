@@ -8,6 +8,7 @@ import useRequestData from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
 import { PlaceholderMedia, PlaceholderIcon, PlaylistDetailsPageContainer, PlaylistImage, PlaylistMusic, PlaylistMusicItem, AudioPlayer } from "./styled";
 import { deleteMusicFromPlaylist } from "../../services/playlist";
+import AlertPop from "../../components/AlertPop/AlertPop";
 
 const PlaylistDetailsPage = () => {
   useProtectedPage();

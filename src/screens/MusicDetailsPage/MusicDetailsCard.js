@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardActions, Chip, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
-import { AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
+import { AddToPlaylistButton, AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
 import AddToPlaylistMenu from "../../components/AddToPlaylistMenu/AddToPlaylistMenu";
-import { AddToPlaylistButton } from "../../components/AddToPlaylistMenu/styled";
 import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {

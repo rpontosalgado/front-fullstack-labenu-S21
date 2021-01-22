@@ -1,25 +1,18 @@
 import React from "react";
 import { Menu, MenuItem } from "@material-ui/core";
-import useRequestData from "../../hooks/useRequestData";
 import { addMusicToPlaylist } from "../../services/playlist";
 
 const AddToPlaylistMenu = props => {
-  const [data] = useRequestData({}, "/playlist");
-
-  const playlists = data.playlist;
-
   const RenderPlaylists = () => (
-    playlists.map(playlist => (
+    props.playlist.map(item => (
       <MenuItem
-        key={playlist.id}
-        onClick={() => handleClickAddToPlaylist(playlist.id)}
+        key={item.id}
+        onClick={() => handleClickAddToPlaylist(item.id)}
       >
-        {playlist.title}
+        {item.title}
       </MenuItem>
     ))
   );
-
-
 
   const handleClickAddToPlaylist = (playlistId) => {
     const body = {
@@ -30,7 +23,7 @@ const AddToPlaylistMenu = props => {
     addMusicToPlaylist(
       body,
       "/playlist/music",
-      handleClosePlaylistsMenu,
+      props.close,
       props.alert
     );
   }
@@ -43,7 +36,7 @@ const AddToPlaylistMenu = props => {
       onClose={props.close}
       PaperProps={{
         style: {
-          maxHeight: 216,
+          maxHeight: "13rem",
           width: '32ch'
         }
       }}

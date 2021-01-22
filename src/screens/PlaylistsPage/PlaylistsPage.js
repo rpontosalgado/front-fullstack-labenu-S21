@@ -6,6 +6,7 @@ import useRequestData from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
 import PlaylistCard from "../PlaylistsPage/PlaylistCard";
 import CreatePlaylistForm from "./CreatePlaylistForm";
+import AlertPop from "../../components/AlertPop/AlertPop";
 
 const PlaylistsPage = () => {
   useProtectedPage();

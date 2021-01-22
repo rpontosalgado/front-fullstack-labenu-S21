@@ -19,12 +19,14 @@ const MusicListPage = () => {
     message: ""
   });
   
-  const [data, updateData] = useRequestData({}, "/music");
-
-  const { music } = data;
+  const [music, updateMusic] = useRequestData({}, "/music");
+  const { songs } = music;
+  
+  const [playlists] = useRequestData({}, "/playlist");
+  const { playlist } = playlists;
 
   const RenderMusicList = () => (
-    music.sort((a, b) => b.date - a.date).map(item => (
+    songs.sort((a, b) => b.date - a.date).map(item => (
       <MusicCard
         key={item.id}
         musicId={item.id}
@@ -34,6 +36,7 @@ const MusicListPage = () => {
         date={item.date}
         authorName={item.authorName}
         genres={item.genres}
+        playlist={playlsit}
         alert={handleAlert}
       />
     ))
@@ -65,7 +68,7 @@ const MusicListPage = () => {
 
   return (
     <MusicListContainer>
-      {music ? RenderMusicList() : <Loading />}
+      {songs ? RenderMusicList() : <Loading />}
       <CreateMusicButton
         color="primary"
         onClick={handleClickOpenCreateMusic}
@@ -77,7 +80,7 @@ const MusicListPage = () => {
         <DialogContent>
           <CreateMusicForm
             close={handleCloseCreateMusic}
-            updateMusic={updateData}
+            updateMusic={updateMusic}
             alert={handleAlert}
           />
         </DialogContent>

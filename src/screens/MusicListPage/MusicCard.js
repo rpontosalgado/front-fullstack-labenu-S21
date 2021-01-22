@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { CardActions, Chip, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
 import { goToMusicDetails } from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
-import { AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
-import AddToPlaylistMenu from "../../components/AddToPlaylistMenu/AddToPlaylistMenu";
+import { AddToPlaylistButton, AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
+import AddToPlaylistMenu from "../../components/AddToPlaylistMenu/AddToPlaylistMenu"; 
 
 const MusicCard = props => {
   const history = useHistory();
@@ -75,11 +75,12 @@ const MusicCard = props => {
         >
           <PlaylistAdd />
         </AddToPlaylistButton>
-        <AddToPlaylistMenu 
+        <AddToPlaylistMenu
           anchorEl={anchorEl}
           open={open}
           close={handleClosePlaylistsMenu}
           musicId={props.musicId}
+          playlist={props.playlist}
           alert={props.alert}
         />
       </CardActions>
