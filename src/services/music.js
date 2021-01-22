@@ -6,7 +6,7 @@ export const createMusic = (
   endpoint,
   closeDialog,
   updateMusic,
-  throwError,
+  throwAlert,
   setIsLoading
 ) => {
   setIsLoading(true);
@@ -19,22 +19,35 @@ export const createMusic = (
     .then(() => {
       closeDialog();
       updateMusic();
+      throwAlert("success", "Música criada!");
       setIsLoading(false);
     })
     .catch(err => {
       setIsLoading(false);
 
-      throwError("Este album já tem uma música com este título");
+      throwAlert(
+        "error",
+        "Este album já tem uma música com este título"
+      );
 
       switch (err.response.status) {
         case 409:
-          throwError("Este album já tem uma música com este título");
+          throwAlert(
+            "error",
+            "Este album já tem uma música com este título"
+          );
           break;
         case 413:
-          throwError("Arquivo maior do que tamanho máximo permitido");
+          throwAlert(
+            "error",
+            "Arquivo maior do que tamanho máximo permitido"
+          );
           break;
         default:
-          throwError(err.response.data.message)
+          throwAlert(
+            "error",
+            err.response.data.message
+          );
           break;
       }
     });

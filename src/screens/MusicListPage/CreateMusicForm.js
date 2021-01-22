@@ -71,7 +71,7 @@ const CreateMusicForm = props => {
         "/music",
         props.close,
         props.updateMusic,
-        props.error,
+        props.alert,
         setIsLoading
       );
     } else {

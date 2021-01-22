@@ -48,9 +48,12 @@ const MusicCard = props => {
       musicId: props.musicId
     }
 
-    addMusicToPlaylist(body, "/playlist/music");
-
-    handleClosePlaylistsMenu();
+    addMusicToPlaylist(
+      body,
+      "/playlist/music",
+      handleClosePlaylistsMenu,
+      props.alert
+    );
   }
   
   return (
@@ -112,7 +115,7 @@ const MusicCard = props => {
               }
             }}
           >
-
+            {RenderPlaylists}
           </Menu>
         </CardActions>
       </MusicInfoWrapper>

@@ -13,8 +13,9 @@ const MusicListPage = () => {
   useProtectedPage();
   
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
-  const [createMusicError, setCreateMusicError] = useState(false);
-  const [createMusicErrorMessage, setCreateMusicErrorMessage] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [severity, setSeverity] = useState("");
   
   const [data, updateData] = useRequestData({}, "/music");
 
@@ -31,6 +32,7 @@ const MusicListPage = () => {
         date={item.date}
         authorName={item.authorName}
         genres={item.genres}
+        alert={handleAlert}
       />
     ))
   );
@@ -43,17 +45,18 @@ const MusicListPage = () => {
     setOpenCreateMusic(false);
   };
 
-  const handleCreateMusicError = message => {
-    setCreateMusicError(true);
-    setCreateMusicErrorMessage(message);
+  const handleAlert = (type, message) => {
+    setSeverity(type);
+    setAlertMessage(message);
+    setAlert(true);
   };
 
-  const handleCloseCreateMusicError = (event, reason) => {
+  const handleCloseCreateMusicAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
 
-    setCreateMusicError(false);
+    setAlert(false);
   };
 
   return (
@@ -71,17 +74,17 @@ const MusicListPage = () => {
           <CreateMusicForm
             close={handleCloseCreateMusic}
             updateMusic={updateData}
-            error={handleCreateMusicError}
+            alert={handleAlert}
           />
         </DialogContent>
       </Dialog>
       <Snackbar 
-        open={createMusicError}
+        open={alert}
         autoHideDuration={6000}
-        onClose={handleCloseCreateMusicError}
+        onClose={handleCloseCreateMusicAlert}
       >
-        <Alert onClose={handleCloseCreateMusicError} severity="error">
-          {createMusicErrorMessage}
+        <Alert onClose={handleCloseCreateMusicAlert} severity={severity}>
+          {alertMessage}
         </Alert>
       </Snackbar>
     </MusicListContainer>
