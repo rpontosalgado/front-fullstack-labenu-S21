@@ -1,27 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardActions, Chip, Typography } from "@material-ui/core";
-import { PlaylistAdd } from "@material-ui/icons";
 import { AddToPlaylistButton, AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
-import AddToPlaylistMenu from "../../components/AddToPlaylistMenu/AddToPlaylistMenu";
 import { timePassed } from "../../utils/timePassed";
+import { PlaylistAdd } from "@material-ui/icons";
 
 const MusicDetailsCard = props => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
+  
   const RenderGenresList = genres => (
     genres.map((genre, i) => (
       <Chip key={i+1} label={genre} size="small" color="primary" />
     ))
   );
-
-  const handleClickOpenPlaylistsMenu = event => {
-    setAnchorEl(event.currentTarget);
-  }
-
-  const handleClosePlaylistsMenu = () => {
-    setAnchorEl(null);
-  }
 
   return (
     <MusicDetailsCardContainer>
@@ -65,17 +54,10 @@ const MusicDetailsCard = props => {
           aria-label="add to playlist"
           aria-controls="playlists-menu"
           aria-haspopup="true"
-          onClick={handleClickOpenPlaylistsMenu}
+          onClick={props.openMenu}
         >
           <PlaylistAdd />
         </AddToPlaylistButton>
-        <AddToPlaylistMenu 
-          anchorEl={anchorEl}
-          open={open}
-          close={handleClosePlaylistsMenu}
-          musicId={props.musicId}
-          alert={props.alert}
-        />
       </CardActions>
     </MusicDetailsCardContainer>
   );

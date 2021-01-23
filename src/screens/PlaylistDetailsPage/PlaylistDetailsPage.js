@@ -35,11 +35,11 @@ const PlaylistDetailsPage = () => {
     setSong({title, album, artist, file});
     
     setPlayerOpen(true);
-  }
+  };
 
   const handleClosePlayer = () => {
     setPlayerOpen(false);
-  }
+  };
 
   const handleDeleteClick = (musicId) => {
     deleteMusicFromPlaylist(
@@ -47,7 +47,7 @@ const PlaylistDetailsPage = () => {
       updateDetails,
       handleAlert
     )
-  }
+  };
 
   const handleAlert = (severity, message) => {
     setAlert({
@@ -71,13 +71,13 @@ const PlaylistDetailsPage = () => {
       alt="Playlist Image"
       title="Playlist Image"
     />
-  )
+  );
 
   const placeholderImage = () => (
     <PlaceholderMedia>
       <PlaceholderIcon path={mdiSharkFin} />
     </PlaceholderMedia>
-  )
+  );
 
   const renderPlaylistMusic = () => (
     playlist.music.map(item => (
@@ -108,7 +108,7 @@ const PlaylistDetailsPage = () => {
         </ListItemSecondaryAction>
       </PlaylistMusicItem>
     ))
-  )
+  );
 
   const renderPlaylistDetails = () => (
     <PlaylistDetailsPageContainer>
@@ -117,7 +117,7 @@ const PlaylistDetailsPage = () => {
         variant="h4"
         component="h3"
         gutterBottom
-        style={{"margin-top": "1.5rem"}}
+        style={{"marginTop": "1.5rem"}}
       >
         {playlist.title}
       </Typography>
@@ -174,7 +174,7 @@ const PlaylistDetailsPage = () => {
         alert={alert}
       />
     </PlaylistDetailsPageContainer>
-  )
+  );
 
   return (playlist ? renderPlaylistDetails() : <Loading />)
   
