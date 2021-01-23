@@ -1,10 +1,11 @@
 import React from "react";
-import { Chip, Typography } from "@material-ui/core";
-import { AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
+import { CardActions, Chip, Typography } from "@material-ui/core";
+import { AddToPlaylistButton, AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
 import { timePassed } from "../../utils/timePassed";
+import { PlaylistAdd } from "@material-ui/icons";
 
 const MusicDetailsCard = props => {
-
+  
   const RenderGenresList = genres => (
     genres.map((genre, i) => (
       <Chip key={i+1} label={genre} size="small" color="primary" />
@@ -48,6 +49,16 @@ const MusicDetailsCard = props => {
           {RenderGenresList(props.genres)}
         </MusicDetailsGenresContainer>
       </MusicDetailsInfoWrapper>
+      <CardActions>
+        <AddToPlaylistButton
+          aria-label="add to playlist"
+          aria-controls="playlists-menu"
+          aria-haspopup="true"
+          onClick={props.openMenu}
+        >
+          <PlaylistAdd />
+        </AddToPlaylistButton>
+      </CardActions>
     </MusicDetailsCardContainer>
   );
 }

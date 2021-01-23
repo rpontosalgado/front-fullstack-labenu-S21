@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, IconButton } from "@material-ui/core";
 
 
 export const MusicDetailsContainer = styled.div`
@@ -30,4 +30,8 @@ export const MusicDetailsGenresContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+`
+
+export const AddToPlaylistButton = styled(IconButton)`
+  margin-left: auto;
 `

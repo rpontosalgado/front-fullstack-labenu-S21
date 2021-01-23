@@ -1,9 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Chip, Typography } from "@material-ui/core";
+import { CardActions, Chip, Typography } from "@material-ui/core";
+import { PlaylistAdd } from "@material-ui/icons";
 import { goToMusicDetails } from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
-import { AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
+import { AddToPlaylistButton, AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
 
 const MusicCard = props => {
   const history = useHistory();
@@ -13,6 +14,11 @@ const MusicCard = props => {
       <Chip key={genre} label={genre} size="small" color="primary" />
     ))
   );
+
+  const setMusicIdAndOpenMenu = event => {
+    props.setMusicToPlaylistId(props.musicId);
+    props.openMenu(event);
+  }
   
   return (
     <MusicCardContainer>
@@ -53,6 +59,16 @@ const MusicCard = props => {
           {RenderGenresList(props.genres)}
         </GenresContainer>
       </MusicInfoWrapper>
+      <CardActions>
+        <AddToPlaylistButton
+          aria-label="add to playlist"
+          aria-controls="playlists-menu"
+          aria-haspopup="true"
+          onClick={setMusicIdAndOpenMenu}
+        >
+          <PlaylistAdd />
+        </AddToPlaylistButton>
+      </CardActions>
     </MusicCardContainer>
   );
 }

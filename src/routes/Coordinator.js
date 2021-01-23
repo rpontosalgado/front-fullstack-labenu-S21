@@ -19,5 +19,5 @@ export const goToPlaylists = (history) => {
 }
 
 export const goToPlaylistDetails = (history, id) => {
-  history.push("/playlist/${id}")
+  history.push(`/playlist/${id}`)
 }

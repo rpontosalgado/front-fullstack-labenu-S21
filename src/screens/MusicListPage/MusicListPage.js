@@ -5,21 +5,81 @@ import MusicCard from "./MusicCard";
 import Loading from "../../components/Loading/Loading"
 import { CreateMusicButton, CreateMusicIcon, MusicListContainer } from "./styled";
 import { mdiMusicNotePlus } from "@mdi/js";
-import { Dialog, DialogContent, DialogTitle, Snackbar } from "@material-ui/core";
+import { Dialog, DialogContent, DialogTitle, Menu, MenuItem } from "@material-ui/core";
 import CreateMusicForm from "./CreateMusicForm";
-import { Alert } from "@material-ui/lab";
+import AlertPop from "../../components/AlertPop/AlertPop";
+import { getData } from "../../services/data";
+import { addMusicToPlaylist } from "../../services/playlist";
 
 const MusicListPage = () => {
   useProtectedPage();
+
+  const [musicData, updateMusicData] = useRequestData({}, "/music");
+  const { music } = musicData;
+
+  const [playlistsData, setPlaylistData] = useState({});
   
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
-  const [createMusicError, setCreateMusicError] = useState(false);
-  const [createMusicErrorMessage, setCreateMusicErrorMessage] = useState("");
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const [musicToPlaylistId, setMusicToPlaylistId] = useState("");
+
+  const [alert, setAlert] = useState({
+    open: false,
+    severity: "",
+    message: ""
+  });
+
+  const handleClickOpenCreateMusic = () => {
+    setOpenCreateMusic(true);
+  };
+
+  const handleCloseCreateMusic = () => {
+    setOpenCreateMusic(false);
+  };
+
+  const handleClickOpenPlaylistsMenu = event => {
+    if (!playlistsData.playlist) getData("/playlist", setPlaylistData);
+
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClosePlaylistsMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleAlert = (severity, message) => {
+    setAlert({
+      open: true,
+      severity,
+      message
+    });
+  };
+
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setAlert(false);
+  };
+
+  const handleClickAddToPlaylist = (playlistId) => {
+    const body = {
+      playlistId,
+      musicId: musicToPlaylistId
+    }
+
+    addMusicToPlaylist(
+      body,
+      "/playlist/music",
+      handleClosePlaylistsMenu,
+      handleAlert
+    );
+  };
   
-  const [data, updateData] = useRequestData({}, "/music");
-
-  const { music } = data;
-
   const RenderMusicList = () => (
     music.sort((a, b) => b.date - a.date).map(item => (
       <MusicCard
@@ -31,30 +91,36 @@ const MusicListPage = () => {
         date={item.date}
         authorName={item.authorName}
         genres={item.genres}
+        setMusicToPlaylistId={setMusicToPlaylistId}
+        openMenu={handleClickOpenPlaylistsMenu}
       />
     ))
   );
 
-  const handleClickOpenCreateMusic = () => {
-    setOpenCreateMusic(true);
-  };
-
-  const handleCloseCreateMusic = () => {
-    setOpenCreateMusic(false);
-  };
-
-  const handleCreateMusicError = message => {
-    setCreateMusicError(true);
-    setCreateMusicErrorMessage(message);
-  };
-
-  const handleCloseCreateMusicError = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setCreateMusicError(false);
-  };
+  const RenderMenu = () => (
+    <Menu
+      id="playlists-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={open}
+      onClose={handleClosePlaylistsMenu}
+      PaperProps={{
+        style: {
+          maxHeight: "13rem",
+          width: '32ch'
+        }
+      }}
+    >
+      {playlistsData.playlist.map(option => (
+        <MenuItem 
+          key={option.id}
+          onClick={() => handleClickAddToPlaylist(option.id)}
+        >
+          {option.title}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
 
   return (
     <MusicListContainer>
@@ -70,20 +136,16 @@ const MusicListPage = () => {
         <DialogContent>
           <CreateMusicForm
             close={handleCloseCreateMusic}
-            updateMusic={updateData}
-            error={handleCreateMusicError}
+            updateMusic={updateMusicData}
+            alert={handleAlert}
           />
         </DialogContent>
       </Dialog>
-      <Snackbar 
-        open={createMusicError}
-        autoHideDuration={6000}
-        onClose={handleCloseCreateMusicError}
-      >
-        <Alert onClose={handleCloseCreateMusicError} severity="error">
-          {createMusicErrorMessage}
-        </Alert>
-      </Snackbar>
+      {playlistsData.playlist && RenderMenu()}
+      <AlertPop
+        close={handleCloseAlert}
+        alert={alert}
+      />
     </MusicListContainer>
   );
 }

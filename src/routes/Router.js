@@ -6,6 +6,7 @@ import SignupPage from "../screens/SignupPage/SignupPage";
 import MusicListPage from "../screens/MusicListPage/MusicListPage";
 import MusicDetailsPage from "../screens/MusicDetailsPage/MusicDetailsPage";
 import PlaylistsPage from "../screens/PlaylistsPage/PlaylistsPage";
+import PlaylistDetailsPage from "../screens/PlaylistDetailsPage/PlaylistDetailsPage";
 
 const Router = props => {
   return (

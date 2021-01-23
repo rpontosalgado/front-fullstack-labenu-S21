@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, CircularProgress, DialogActions, TextField } from "@material-ui/core";
-import { UploadImageIcon } from "./styled";
+import { UploadedImage, UploadImageIcon } from "./styled";
 import { mdiFileImage } from "@mdi/js";
 import useForm from "../../hooks/useForm";
 import { createPlaylist } from "../../services/playlist";
@@ -53,7 +53,7 @@ const CreatePlaylistForm = props => {
         "/playlist",
         props.close,
         props.updatePlaylists,
-        props.error,
+        props.alert,
         setIsLoading
       );
     } else {
@@ -84,8 +84,6 @@ const CreatePlaylistForm = props => {
         name='subtitle'
         label='Subtítulo'
         onChange={handleInputChange}
-        error={subtitleError}
-        helperText={subtitleErrorMessage}
         variant='outlined'
         margin='dense'
         fullWidth
