@@ -22,7 +22,7 @@ const MusicListPage = () => {
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const openMenu = Boolean(anchorEl);
 
   const [musicToPlaylistId, setMusicToPlaylistId] = useState("");
 
@@ -102,7 +102,7 @@ const MusicListPage = () => {
       id="playlists-menu"
       anchorEl={anchorEl}
       keepMounted
-      open={open}
+      open={openMenu}
       onClose={handleClosePlaylistsMenu}
       PaperProps={{
         style: {
@@ -112,7 +112,7 @@ const MusicListPage = () => {
       }}
     >
       {playlistsData.playlist.map(option => (
-        <MenuItem 
+        <MenuItem
           key={option.id}
           onClick={() => handleClickAddToPlaylist(option.id)}
         >

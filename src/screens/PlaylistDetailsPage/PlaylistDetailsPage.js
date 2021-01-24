@@ -116,6 +116,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="h4"
         component="h3"
+        color="textPrimary"
         gutterBottom
         style={{"marginTop": "1.5rem"}}
       >
@@ -124,6 +125,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="body2"
         component="h4"
+        color="textPrimary"
         gutterBottom
       >
         {playlist.subtitle}
@@ -131,6 +133,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="body1"
         component="h5"
+        color="textPrimary"
         gutterBottom
       >
         by {playlist.creatorName}
@@ -147,6 +150,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="h6"
           component="h3"
+          color="textPrimary"
           align="center"
           gutterBottom
         >
@@ -155,6 +159,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="body2"
           component="p"
+          color="textPrimary"
           align="center"
         >
           {song.artist}
@@ -162,6 +167,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="body1"
           component="h4"
+          color="textPrimary"
           align="center"
           gutterBottom
         >

@@ -61,7 +61,9 @@ const PlaylistsPage = () => {
 
   return (
     <PlaylistsPageContainer>
-      <Typography variant="h2" color="textPrimary" >Playlists</Typography>
+      <Typography variant="h2" color="textPrimary" gutterBottom >
+        Playlists
+      </Typography>
       <Divider/>
       <PlaylistsContainer>
         {playlists ? RenderPlaylists() : <Loading />}

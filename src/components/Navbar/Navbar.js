@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
-import { ChevronLeft, MusicNote, QueueMusic } from "@material-ui/icons";
-import { goToMusicList, goToPlaylists } from "../../routes/Coordinator";
+import { Album, ChevronLeft, MusicNote, People, QueueMusic, Radio } from "@material-ui/icons";
+import { goToGenres, goToMusicList, goToPlaylists } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -38,6 +38,18 @@ const Navbar = props => {
       case "playlist":
         goToPlaylists(history);
         break;
+      
+      case "genres":
+        goToGenres(history);
+        break;
+      
+      case "albums":
+        goToPlaylists(history);
+        break;
+      
+      case "artists":
+        goToPlaylists(history);
+        break;
     
       default:
         break;
@@ -66,7 +78,7 @@ const Navbar = props => {
           <ListItemIcon>
             <MusicNote />
           </ListItemIcon>
-          <ListItemText primary="Music" />
+          <ListItemText primary="Música" />
         </ListItem>
         <ListItem
           button
@@ -76,6 +88,34 @@ const Navbar = props => {
             <QueueMusic />
           </ListItemIcon>
           <ListItemText primary="Playlist" />
+        </ListItem>
+        <Divider />
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "genres")}
+        >
+          <ListItemIcon>
+            <Radio />
+          </ListItemIcon>
+          <ListItemText primary="Gêneros" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "albums")}
+        >
+          <ListItemIcon>
+            <Album />
+          </ListItemIcon>
+          <ListItemText primary="Álbuns" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "artists")}
+        >
+          <ListItemIcon>
+            <People />
+          </ListItemIcon>
+          <ListItemText primary="Artistas" />
         </ListItem>
       </List>
     </Drawer>

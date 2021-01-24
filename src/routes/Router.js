@@ -7,6 +7,8 @@ import MusicListPage from "../screens/MusicListPage/MusicListPage";
 import MusicDetailsPage from "../screens/MusicDetailsPage/MusicDetailsPage";
 import PlaylistsPage from "../screens/PlaylistsPage/PlaylistsPage";
 import PlaylistDetailsPage from "../screens/PlaylistDetailsPage/PlaylistDetailsPage";
+import GenresPage from "../screens/GenresPage/GenresPage";
+import GenreMusicPage from "../screens/GenreMusicPage/GenreMusicPage";
 
 const Router = props => {
   return (
@@ -19,6 +21,12 @@ const Router = props => {
       </Route>
       <Route exact path={["/music", "/"]}>
         <MusicListPage />
+      </Route>
+      <Route exact path={"/music/genre"}>
+        <GenresPage />
+      </Route>
+      <Route exact path={"/music/genre/:genre"}>
+        <GenreMusicPage />
       </Route>
       <Route exact path={"/music/:id"}>
         <MusicDetailsPage />
