@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
 import { Album, ChevronLeft, MusicNote, People, QueueMusic, Radio } from "@material-ui/icons";
-import { goToGenres, goToMusicList, goToPlaylists } from "../../routes/Coordinator";
+import { goToAlbums, goToArtists, goToGenres, goToMusicList, goToPlaylists } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -44,11 +44,11 @@ const Navbar = props => {
         break;
       
       case "albums":
-        goToPlaylists(history);
+        goToAlbums(history);
         break;
       
       case "artists":
-        goToPlaylists(history);
+        goToArtists(history);
         break;
     
       default:
