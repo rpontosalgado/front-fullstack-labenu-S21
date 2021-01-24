@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Dialog, DialogActions, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Menu, MenuItem, Typography } from "@material-ui/core";
-import { AddToPlaylistButton, AudioPlayer, GenreMusicList, GenreMusicListItem, GenreMusicPageContainer } from "./styled";
+import { AddToPlaylistButton, AudioPlayer, ArtistMusicList, ArtistMusicListItem, ArtistMusicPageContainer } from "./styled";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import { PlaylistAdd } from "@material-ui/icons";
@@ -10,13 +10,13 @@ import { addMusicToPlaylist } from "../../services/playlist"
 import AlertPop from "../../components/AlertPop/AlertPop"
 import Loading from "../../components/Loading/Loading"
 
-const GenreMusicPage = () => {
+const ArtistMusicPage = () => {
   useProtectedPage();
 
-  const { genre } = useParams();
+  const { artist } = useParams();
 
-  const [genreMusic] = useRequestData({}, `/music/?genre=${genre}`);
-  const { music } = genreMusic;
+  const [artistMusic] = useRequestData({}, `/music/?artist=${artist}`);
+  const { music } = artistMusic;
 
   const [playerOpen, setPlayerOpen] = useState(false);
   const [song, setSong] = useState({
@@ -92,9 +92,9 @@ const GenreMusicPage = () => {
     );
   };
 
-  const RenderGenreMusic = () => (
+  const RenderArtistMusic = () => (
     music.map(item => (
-      <GenreMusicListItem
+      <ArtistMusicListItem
         key={item.id}
         button
         onClick={
@@ -121,7 +121,7 @@ const GenreMusicPage = () => {
             <PlaylistAdd />
           </IconButton>
         </ListItemSecondaryAction>
-      </GenreMusicListItem>
+      </ArtistMusicListItem>
     ))
   );
 
@@ -151,7 +151,7 @@ const GenreMusicPage = () => {
   );
 
   return (
-    <GenreMusicPageContainer>
+    <ArtistMusicPageContainer>
       <Typography
         variant="h4"
         component="h3"
@@ -166,9 +166,9 @@ const GenreMusicPage = () => {
       >
         { genre }
       </Typography>
-      <GenreMusicList>
-        {music ? RenderGenreMusic() : <Loading />}
-      </GenreMusicList>
+      <ArtistMusicList>
+        {music ? RenderArtistMusic() : <Loading />}
+      </ArtistMusicList>
       <Dialog open={playerOpen} onClose={handleClosePlayer}>
         <DialogContent>
         <AudioPlayer controls preload="auto">
@@ -218,8 +218,8 @@ const GenreMusicPage = () => {
         close={handleCloseAlert}
         alert={alert}
       />
-    </GenreMusicPageContainer>
+    </ArtistMusicPageContainer>
   )
 }
 
-export default GenreMusicPage;
+export default ArtistMusicPage;

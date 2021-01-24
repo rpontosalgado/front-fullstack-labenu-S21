@@ -10,13 +10,13 @@ import { addMusicToPlaylist } from "../../services/playlist"
 import AlertPop from "../../components/AlertPop/AlertPop"
 import Loading from "../../components/Loading/Loading"
 
-const GenreMusicPage = () => {
+const AlbumMusicPage = () => {
   useProtectedPage();
 
-  const { genre } = useParams();
+  const { album } = useParams();
 
-  const [genreMusic] = useRequestData({}, `/music/?genre=${genre}`);
-  const { music } = genreMusic;
+  const [albumMusic] = useRequestData({}, `/music/?album=${album}`);
+  const { music } = albumMusic;
 
   const [playerOpen, setPlayerOpen] = useState(false);
   const [song, setSong] = useState({
@@ -92,9 +92,9 @@ const GenreMusicPage = () => {
     );
   };
 
-  const RenderGenreMusic = () => (
+  const RenderAlbumMusic = () => (
     music.map(item => (
-      <GenreMusicListItem
+      <AlbumMusicListItem
         key={item.id}
         button
         onClick={
@@ -107,7 +107,7 @@ const GenreMusicPage = () => {
           )
         }
       >
-        <ListItemText
+        <ListItemText 
           primary={item.title}
           secondary={`by ${item.authorName}`}
         />
@@ -121,7 +121,7 @@ const GenreMusicPage = () => {
             <PlaylistAdd />
           </IconButton>
         </ListItemSecondaryAction>
-      </GenreMusicListItem>
+      </AlbumMusicListItem>
     ))
   );
 
@@ -151,23 +151,23 @@ const GenreMusicPage = () => {
   );
 
   return (
-    <GenreMusicPageContainer>
+    <AlbumMusicPageContainer>
       <Typography
         variant="h4"
         component="h3"
         color="textPrimary"
       >
-        Gênero:
+        Álbum:
       </Typography>
       <Typography
         variant="h3"
         component="h4"
         color="textPrimary"
       >
-        { genre }
+        { album }
       </Typography>
       <GenreMusicList>
-        {music ? RenderGenreMusic() : <Loading />}
+        {music ? RenderAlbumMusic() : <Loading />}
       </GenreMusicList>
       <Dialog open={playerOpen} onClose={handleClosePlayer}>
         <DialogContent>
@@ -218,8 +218,8 @@ const GenreMusicPage = () => {
         close={handleCloseAlert}
         alert={alert}
       />
-    </GenreMusicPageContainer>
+    </AlbumMusicPageContainer>
   )
 }
 
-export default GenreMusicPage;
+export default AlbumMusicPage;
