@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dialog, DialogActions, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Menu, MenuItem } from "@material-ui/core";
-import { AudioPlayer, GenreMusicList, GenreMusicPageContainer } from "./styled";
+import { Dialog, DialogActions, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Menu, MenuItem, Typography } from "@material-ui/core";
+import { AddToPlaylistButton, AudioPlayer, GenreMusicList, GenreMusicListItem, GenreMusicPageContainer } from "./styled";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import { PlaylistAdd } from "@material-ui/icons";
+import { getData } from "../../services/data";
+import { addMusicToPlaylist } from "../../services/playlist"
+import AlertPop from "../../components/AlertPop/AlertPop"
+import Loading from "../../components/Loading/Loading"
 
 const GenreMusicPage = () => {
   useProtectedPage();
@@ -16,6 +20,7 @@ const GenreMusicPage = () => {
 
   const [playerOpen, setPlayerOpen] = useState(false);
   const [song, setSong] = useState({
+    id: "",
     title: "",
     album: "",
     artist: "",
@@ -35,14 +40,8 @@ const GenreMusicPage = () => {
     message: ""
   });
 
-  const [alert, setAlert] = useState({
-    open: false,
-    severity: "",
-    message: ""
-  });
-
-  const handleClickSong = (title, album, artist, file) => {
-    setSong({title, album, artist, file});
+  const handleClickSong = (id, title, album, artist, file) => {
+    setSong({id, title, album, artist, file});
     
     setPlayerOpen(true);
   };
@@ -100,6 +99,7 @@ const GenreMusicPage = () => {
         button
         onClick={
           () => handleClickSong(
+            item.id,
             item.title,
             item.album,
             item.authorName,
@@ -207,7 +207,7 @@ const GenreMusicPage = () => {
             aria-label="add to playlist"
             aria-controls="playlists-menu"
             aria-haspopup="true"
-            onClick={(event) => handleClickOpenPlaylistsMenu(event, item.id)}
+            onClick={(event) => handleClickOpenPlaylistsMenu(event, song.id)}
           >
             <PlaylistAdd />
           </AddToPlaylistButton>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { List, ListItem } from "@material-ui/core";
+import { IconButton, List, ListItem } from "@material-ui/core";
 
 export const GenreMusicPageContainer = styled.div`
   padding: 24px;

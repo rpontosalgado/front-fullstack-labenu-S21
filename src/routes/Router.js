@@ -22,12 +22,6 @@ const Router = props => {
       <Route exact path={["/music", "/"]}>
         <MusicListPage />
       </Route>
-      <Route exact path={"/music/genre"}>
-        <GenresPage />
-      </Route>
-      <Route exact path={"/music/genre/:genre"}>
-        <GenreMusicPage />
-      </Route>
       <Route exact path={"/music/:id"}>
         <MusicDetailsPage />
       </Route>
@@ -36,6 +30,24 @@ const Router = props => {
       </Route>
       <Route exact path={"/playlist/:id"}>
         <PlaylistDetailsPage />
+      </Route>
+      <Route exact path={"/genres"}>
+        <GenresPage />
+      </Route>
+      <Route exact path={"/genres/:genre"}>
+        <GenreMusicPage />
+      </Route>
+      <Route exact path={"/albums"}>
+        <AlbumsPage />
+      </Route>
+      <Route exact path={"/albums/:album"}>
+        <AlbumMusicPage />
+      </Route>
+      <Route exact path={"/artists"}>
+        <ArtistsPage />
+      </Route>
+      <Route exact path={"/artists/:artist"}>
+        <ArtistMusicPage />
       </Route>
       <Route>
         <ErrorPage />

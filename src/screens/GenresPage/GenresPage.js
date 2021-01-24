@@ -2,15 +2,15 @@ import React from "react";
 import { Divider, ListItemText, Typography } from "@material-ui/core";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
-import { GenresList } from "./styled";
+import { GenresList, GenresListItem, GenresPageContainer } from "./styled";
 import Loading from "../../components/Loading/Loading";
-import { goToGenres } from "../../routes/Coordinator";
+import { goToGenreMusic } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
 
 const GenresPage = () => {
   useProtectedPage();
 
-  const [genresData] = useRequestData({}, '/music/genres');
+  const [genresData] = useRequestData({}, '/genres');
   const { genres } = genresData;
 
   const history = useHistory();
@@ -20,7 +20,7 @@ const GenresPage = () => {
       <GenresListItem
         key={genre}
         button
-        onClick={() => goToGenres(history)}
+        onClick={() => goToGenreMusic(history, genre)}
       >
         <ListItemText
           primary={genre}
