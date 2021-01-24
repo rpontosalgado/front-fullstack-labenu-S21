@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { mdiSharkFin } from "@mdi/js";
-import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { LoginIcon, ScreenContainer, SignUpButtonContainer } from "./styled";
-import LoginForm from "./LoginForm";
 import { Button, Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+import { mdiSharkFin } from "@mdi/js";
+import { LoginIcon, ScreenContainer, SignUpButtonContainer } from "./styled";
+import LoginForm from "./LoginForm";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 import { goToSignup } from "../../routes/Coordinator";
 
 const LoginPage = props => {
@@ -45,6 +45,6 @@ const LoginPage = props => {
       </Snackbar>
     </ScreenContainer>
   );
-}
+};
 
 export default LoginPage;

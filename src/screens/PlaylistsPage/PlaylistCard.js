@@ -1,8 +1,12 @@
 import React from "react";
-import { CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { PlaceholderIcon, PlaceholderMedia, PlaylistCardContainer } from "./styled";
+import {
+  CardActionArea, CardContent, CardMedia, Typography
+} from "@material-ui/core";
 import { mdiSharkFin } from "@mdi/js";
+import {
+  PlaceholderIcon, PlaceholderMedia, PlaylistCardContainer
+} from "./styled";
 import { goToPlaylistDetails } from "../../routes/Coordinator";
 
 const PlaylistCard = props => {
@@ -14,13 +18,13 @@ const PlaylistCard = props => {
       title="Playlist Image"
       height="320"
     />
-  )
+  );
 
   const placeholderImage = () => (
     <PlaceholderMedia>
       <PlaceholderIcon path={mdiSharkFin} />
     </PlaceholderMedia>
-  )
+  );
 
   return (
     <PlaylistCardContainer>
@@ -57,6 +61,6 @@ const PlaylistCard = props => {
       </CardActionArea>
     </PlaylistCardContainer>
   );
-}
+};
 
 export default PlaylistCard;

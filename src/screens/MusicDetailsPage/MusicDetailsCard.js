@@ -1,9 +1,15 @@
 import React from "react";
 import { CardActions, Chip, Typography } from "@material-ui/core";
-import { AddToPlaylistButton, AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
-import { timePassed } from "../../utils/timePassed";
 import { PlaylistAdd } from "@material-ui/icons";
+import {
+  AddToPlaylistButton,
+  AudioPlayer,
+  MusicDetailsCardContainer,
+  MusicDetailsGenresContainer,
+  MusicDetailsInfoWrapper
+} from "./styled";
 import { goToArtistMusic } from "../../routes/Coordinator";
+import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {
   
@@ -72,6 +78,6 @@ const MusicDetailsCard = props => {
       </CardActions>
     </MusicDetailsCardContainer>
   );
-}
+};
 
 export default MusicDetailsCard;

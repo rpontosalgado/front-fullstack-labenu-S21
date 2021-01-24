@@ -2,9 +2,17 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { CardActions, Chip, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
-import { goToAlbumMusic, goToArtistMusic, goToGenreMusic, goToMusicDetails } from "../../routes/Coordinator";
+import {
+  AddToPlaylistButton,
+  AudioPlayer,
+  GenresContainer,
+  MusicCardContainer,
+  MusicInfoWrapper
+} from "./styled";
+import {
+  goToAlbumMusic, goToArtistMusic, goToGenreMusic, goToMusicDetails
+} from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
-import { AddToPlaylistButton, AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
 
 const MusicCard = props => {
   const history = useHistory();
@@ -24,7 +32,7 @@ const MusicCard = props => {
   const setMusicIdAndOpenMenu = event => {
     props.setMusicToPlaylistId(props.musicId);
     props.openMenu(event);
-  }
+  };
   
   return (
     <MusicCardContainer>
@@ -81,6 +89,6 @@ const MusicCard = props => {
       </CardActions>
     </MusicCardContainer>
   );
-}
+};
 
 export default MusicCard;

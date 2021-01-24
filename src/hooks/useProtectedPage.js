@@ -1,6 +1,6 @@
-const { useLayoutEffect } = require("react");
-const { useHistory } = require("react-router-dom");
-const { goToLogin } = require("../routes/Coordinator");
+import { useLayoutEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { goToLogin } from"../routes/Coordinator";
 
 const useProtectedPage = () => {
   const history = useHistory();
@@ -12,6 +12,6 @@ const useProtectedPage = () => {
       goToLogin(history);
     }
   }, [history]);
-}
+};
 
 export default useProtectedPage;

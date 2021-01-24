@@ -1,10 +1,10 @@
 import './App.css';
-import { BrowserRouter } from "react-router-dom";
 import React, { useState } from 'react';
-import Header from './components/Header/Header';
-import Router from "./routes/Router";
-import Navbar from './components/Navbar/Navbar';
+import { BrowserRouter } from "react-router-dom";
 import { makeStyles } from '@material-ui/core';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Router from "./routes/Router";
 
 const useStyles = makeStyles(theme => ({
   offset: theme.mixins.toolbar
@@ -32,6 +32,6 @@ function App() {
       </main>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

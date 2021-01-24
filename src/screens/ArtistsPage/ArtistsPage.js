@@ -1,11 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Divider, ListItemText, Typography } from "@material-ui/core";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import useRequestData from "../../hooks/useRequestData";
 import { ArtistsList, ArtistsListItem, ArtistsPageContainer } from "./styled";
 import Loading from "../../components/Loading/Loading";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
 import { goToArtistMusic } from "../../routes/Coordinator";
-import { useHistory } from "react-router-dom";
 
 const ArtistsPage = () => {
   useProtectedPage();
@@ -37,7 +37,7 @@ const ArtistsPage = () => {
         {artists ? renderArtists() : <Loading />}
       </ArtistsList>
     </ArtistsPageContainer>
-  )
-}
+  );
+};
 
 export default ArtistsPage;

@@ -9,6 +9,10 @@ import PlaylistsPage from "../screens/PlaylistsPage/PlaylistsPage";
 import PlaylistDetailsPage from "../screens/PlaylistDetailsPage/PlaylistDetailsPage";
 import GenresPage from "../screens/GenresPage/GenresPage";
 import GenreMusicPage from "../screens/GenreMusicPage/GenreMusicPage";
+import AlbumsPage from "../screens/AlbumsPage/AlbumsPage";
+import AlbumMusicPage from "../screens/AlbumMusicPage/AlbumMusicPage";
+import ArtistsPage from "../screens/ArtistsPage/ArtistsPage";
+import ArtistMusicPage from "../screens/ArtistMusicPage/ArtistMusicPage";
 
 const Router = props => {
   return (
@@ -54,6 +58,6 @@ const Router = props => {
       </Route>
     </Switch>
   );
-}
+};
 
 export default Router;

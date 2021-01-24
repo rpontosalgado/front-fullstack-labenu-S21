@@ -1,12 +1,23 @@
 import React, { useState } from "react";
-import { Dialog, DialogContent, DialogTitle, Divider, Typography } from "@material-ui/core";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import { CreatePlaylistButton, CreatePlaylistIcon, PlaylistsContainer, PlaylistsPageContainer } from "./styled";
-import useRequestData from "../../hooks/useRequestData";
-import Loading from "../../components/Loading/Loading";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  Typography
+} from "@material-ui/core";
+import {
+  CreatePlaylistButton,
+  CreatePlaylistIcon,
+  PlaylistsContainer,
+  PlaylistsPageContainer
+} from "./styled";
 import PlaylistCard from "../PlaylistsPage/PlaylistCard";
 import CreatePlaylistForm from "./CreatePlaylistForm";
+import Loading from "../../components/Loading/Loading";
 import AlertPop from "../../components/AlertPop/AlertPop";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
 
 const PlaylistsPage = () => {
   useProtectedPage();
@@ -90,6 +101,6 @@ const PlaylistsPage = () => {
       />
     </PlaylistsPageContainer>
   );
-}
+};
 
 export default PlaylistsPage;

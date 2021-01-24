@@ -12,6 +12,6 @@ const useUnprotectedPage = () => {
       goToMusicList(history);
     }
   }, [history])
-}
+};
 
 export default useUnprotectedPage;

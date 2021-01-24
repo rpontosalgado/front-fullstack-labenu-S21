@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, CircularProgress, DialogActions, TextField } from "@material-ui/core";
-import { UploadedImage, UploadImageIcon } from "./styled";
+import {
+  Button, CircularProgress, DialogActions, TextField
+} from "@material-ui/core";
 import { mdiFileImage } from "@mdi/js";
+import { UploadedImage, UploadImageIcon } from "./styled";
 import useForm from "../../hooks/useForm";
 import { createPlaylist } from "../../services/playlist";
 
@@ -28,8 +30,8 @@ const CreatePlaylistForm = props => {
 
     reader.onload = () => {
       setUrl(reader.result);
-    }
-  }
+    };
+  };
 
   const handleCreatePlaylistClick = event => {
     event.preventDefault();
@@ -46,7 +48,7 @@ const CreatePlaylistForm = props => {
         title: form.title,
         subtitle: form.subtitle,
         image: url
-      }
+      };
 
       createPlaylist(
         body,
@@ -62,7 +64,7 @@ const CreatePlaylistForm = props => {
         setTitleErrorMessage("Favor informar um título");
       }
     }
-  }
+  };
 
   return (
     <form id="create-playlist-form">
@@ -123,7 +125,7 @@ const CreatePlaylistForm = props => {
         </Button>
       </DialogActions>
     </form>
-  )
-}
+  );
+};
 
 export default CreatePlaylistForm;

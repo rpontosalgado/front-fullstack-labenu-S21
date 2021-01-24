@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { mdiSharkFin } from "@mdi/js";
-import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { ScreenContainer, SignupIcon } from "./styled";
-import SignupForm from "./SignupForm";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+import { mdiSharkFin } from "@mdi/js";
+import { ScreenContainer, SignupIcon } from "./styled";
+import SignupForm from "./SignupForm";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
 const SignupPage = props => {
   const [open, setOpen] = useState(false);
@@ -33,6 +33,6 @@ const SignupPage = props => {
       </Snackbar>
     </ScreenContainer>
   );
-}
+};
 
 export default SignupPage;

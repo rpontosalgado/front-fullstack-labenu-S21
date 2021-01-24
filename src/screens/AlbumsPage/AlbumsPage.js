@@ -1,10 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Divider, ListItemText, Typography } from "@material-ui/core";
+import { AlbumsList, AlbumsListItem, AlbumsPageContainer } from "./styled";
+import Loading from "../../components/Loading/Loading";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
-import Loading from "../../components/Loading/Loading";
-import { useHistory } from "react-router-dom";
-import { AlbumsList, AlbumsListItem, AlbumsPageContainer } from "./styled";
 import { goToAlbumMusic } from "../../routes/Coordinator";
 
 const AlbumsPage = () => {
@@ -38,7 +38,7 @@ const AlbumsPage = () => {
         {albums ? renderAlbums() : <Loading />}
       </AlbumsList>
     </AlbumsPageContainer>
-  )
-}
+  );
+};
 
 export default AlbumsPage;

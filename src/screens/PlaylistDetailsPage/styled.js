@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Icon from "@mdi/react";
 import { List, ListItem, Paper } from "@material-ui/core";
+import Icon from "@mdi/react";
 
 export const PlaylistDetailsPageContainer = styled.div`
   padding: 24px;

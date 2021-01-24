@@ -1,8 +1,8 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
 import { Album, ChevronLeft, MusicNote, People, QueueMusic, Radio } from "@material-ui/icons";
 import { goToAlbums, goToArtists, goToGenres, goToMusicList, goToPlaylists } from "../../routes/Coordinator";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   drawerHeader: {
@@ -27,7 +27,7 @@ const Navbar = props => {
     }
 
     setOpenNavBar(false);
-  }
+  };
 
   const handleNavItemClick = (history, screen) => {
     switch (screen) {
@@ -56,7 +56,7 @@ const Navbar = props => {
     }
 
     setOpenNavBar(false);
-  }
+  };
 
   return (
     <Drawer 
@@ -119,7 +119,7 @@ const Navbar = props => {
         </ListItem>
       </List>
     </Drawer>
-  )
-}
+  );
+};
 
 export default Navbar;

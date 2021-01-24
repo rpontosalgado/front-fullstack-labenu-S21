@@ -1,11 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Divider, ListItemText, Typography } from "@material-ui/core";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import useRequestData from "../../hooks/useRequestData";
 import { GenresList, GenresListItem, GenresPageContainer } from "./styled";
 import Loading from "../../components/Loading/Loading";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
 import { goToGenreMusic } from "../../routes/Coordinator";
-import { useHistory } from "react-router-dom";
 
 const GenresPage = () => {
   useProtectedPage();
@@ -37,7 +37,7 @@ const GenresPage = () => {
         {genres ? renderGenres() : <Loading />}
       </GenresList>
     </GenresPageContainer>
-  )
-}
+  );
+};
 
 export default GenresPage;

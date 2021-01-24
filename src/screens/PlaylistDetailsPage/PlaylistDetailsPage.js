@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dialog, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Typography } from "@material-ui/core";
+import {
+  Dialog,
+  DialogContent,
+  IconButton,
+  ListItemSecondaryAction,
+  ListItemText,
+  Typography
+} from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import { mdiSharkFin } from "@mdi/js";
+import {
+  PlaceholderMedia,
+  PlaceholderIcon,
+  PlaylistDetailsPageContainer,
+  PlaylistImage,
+  PlaylistMusic,
+  PlaylistMusicItem,
+  AudioPlayer
+} from "./styled";
+import Loading from "../../components/Loading/Loading";
+import AlertPop from "../../components/AlertPop/AlertPop";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
-import Loading from "../../components/Loading/Loading";
-import { PlaceholderMedia, PlaceholderIcon, PlaylistDetailsPageContainer, PlaylistImage, PlaylistMusic, PlaylistMusicItem, AudioPlayer } from "./styled";
 import { deleteMusicFromPlaylist } from "../../services/playlist";
-import AlertPop from "../../components/AlertPop/AlertPop";
 
 const PlaylistDetailsPage = () => {
   useProtectedPage();
@@ -46,7 +61,7 @@ const PlaylistDetailsPage = () => {
       `/playlist/${id}/music/${musicId}`,
       updateDetails,
       handleAlert
-    )
+    );
   };
 
   const handleAlert = (severity, message) => {
@@ -182,8 +197,8 @@ const PlaylistDetailsPage = () => {
     </PlaylistDetailsPageContainer>
   );
 
-  return (playlist ? renderPlaylistDetails() : <Loading />)
+  return (playlist ? renderPlaylistDetails() : <Loading />);
   
-}
+};
 
 export default PlaylistDetailsPage;

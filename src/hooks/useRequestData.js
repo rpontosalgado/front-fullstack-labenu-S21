@@ -9,6 +9,6 @@ const useRequestData = (initialState, endpoint) => {
   const updateData = () => getData(endpoint, setData);
 
   return [data, updateData];
-}
+};
 
 export default useRequestData;

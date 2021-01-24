@@ -10,7 +10,7 @@ const ErrorPage = () => {
         {"Erro 404 - Página não encontrada :("}
       </ErrorText>
     </ErrorPageContainer>
-  )
-}
+  );
+};
 
 export default ErrorPage;

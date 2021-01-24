@@ -7,7 +7,7 @@ const Loading = () => {
     <LoadingContainer>
       <CircularProgress/>
     </LoadingContainer>
-  )
-}
+  );
+};
 
 export default Loading;

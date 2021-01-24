@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dialog, DialogActions, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Menu, MenuItem, Typography } from "@material-ui/core";
-import { AddToPlaylistButton, AudioPlayer, ArtistMusicList, ArtistMusicListItem, ArtistMusicPageContainer } from "./styled";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import useRequestData from "../../hooks/useRequestData";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  IconButton,
+  ListItemSecondaryAction,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Typography
+} from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
-import { getData } from "../../services/data";
-import { addMusicToPlaylist } from "../../services/playlist"
+import {
+  AddToPlaylistButton,
+  AudioPlayer,
+  ArtistMusicList,
+  ArtistMusicListItem,
+  ArtistMusicPageContainer
+} from "./styled";
 import AlertPop from "../../components/AlertPop/AlertPop"
 import Loading from "../../components/Loading/Loading"
+import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
+import { getData } from "../../services/data";
+import { addMusicToPlaylist } from "../../services/playlist"
 
 const ArtistMusicPage = () => {
   useProtectedPage();
@@ -219,7 +235,7 @@ const ArtistMusicPage = () => {
         alert={alert}
       />
     </ArtistMusicPageContainer>
-  )
-}
+  );
+};
 
 export default ArtistMusicPage;

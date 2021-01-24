@@ -1,14 +1,14 @@
-import { Menu, MenuItem } from "@material-ui/core";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Menu, MenuItem } from "@material-ui/core";
+import { MusicDetailsContainer } from "./styled";
+import MusicDetailsCard from "./MusicDetailsCard";
 import AlertPop from "../../components/AlertPop/AlertPop";
 import Loading from "../../components/Loading/Loading";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import { getData } from "../../services/data";
 import { addMusicToPlaylist } from "../../services/playlist";
-import MusicDetailsCard from "./MusicDetailsCard";
-import { MusicDetailsContainer } from "./styled";
 
 const MusicDetailsPage = () => {
   useProtectedPage();
@@ -117,6 +117,6 @@ const MusicDetailsPage = () => {
       />
     </MusicDetailsContainer>
   );
-}
+};
 
 export default MusicDetailsPage;

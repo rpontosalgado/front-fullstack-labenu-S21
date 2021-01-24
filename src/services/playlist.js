@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "../constants/urls"
+import { baseUrl } from "../constants/urls";
 
 export const createPlaylist = (
   body,
@@ -40,7 +40,7 @@ export const createPlaylist = (
           break;
       }
     });
-}
+};
 
 export const addMusicToPlaylist = (body, endpoint, closeMenu, throwAlert) => {
   axios.put(`${baseUrl}${endpoint}`, body, {
@@ -73,7 +73,7 @@ export const addMusicToPlaylist = (body, endpoint, closeMenu, throwAlert) => {
           break;
       }
     });
-}
+};
 
 export const deleteMusicFromPlaylist = (endpoint, update, alert) => {
   axios.delete(`${baseUrl}${endpoint}`, {
@@ -88,4 +88,4 @@ export const deleteMusicFromPlaylist = (endpoint, update, alert) => {
     .catch(err => {
       alert("error", err.response.message);
     });
-}
+};
