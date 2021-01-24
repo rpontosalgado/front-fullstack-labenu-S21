@@ -3,12 +3,19 @@ import { CardActions, Chip, Typography } from "@material-ui/core";
 import { AddToPlaylistButton, AudioPlayer, MusicDetailsCardContainer, MusicDetailsGenresContainer, MusicDetailsInfoWrapper } from "./styled";
 import { timePassed } from "../../utils/timePassed";
 import { PlaylistAdd } from "@material-ui/icons";
+import { goToArtistMusic } from "../../routes/Coordinator";
 
 const MusicDetailsCard = props => {
   
   const RenderGenresList = genres => (
     genres.map((genre, i) => (
-      <Chip key={i+1} label={genre} size="small" color="primary" />
+      <Chip
+        key={i+1}
+        label={genre}
+        size="small"
+        color="primary"
+        onClick={() => goToGenreMusic(history, genre)}
+      />
     ))
   );
 
@@ -34,6 +41,8 @@ const MusicDetailsCard = props => {
           variant="body2"
           component="p"
           align="center"
+          style={{cursor: "pointer"}}
+          onClick={() => goToArtistMusic(history, props.authorName)}
         >
           {props.authorName}
         </Typography>
@@ -42,6 +51,8 @@ const MusicDetailsCard = props => {
           component="h4"
           align="center"
           gutterBottom
+          style={{cursor: "pointer"}}
+          onClick={() => goToAlbumMusic(history, props.album)}
         >
           {props.album}
         </Typography>

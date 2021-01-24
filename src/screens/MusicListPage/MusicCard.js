@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { CardActions, Chip, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
-import { goToMusicDetails } from "../../routes/Coordinator";
+import { goToAlbumMusic, goToArtistMusic, goToGenreMusic, goToMusicDetails } from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
 import { AddToPlaylistButton, AudioPlayer, GenresContainer, MusicCardContainer, MusicInfoWrapper } from "./styled";
 
@@ -11,7 +11,13 @@ const MusicCard = props => {
 
   const RenderGenresList = genres => (
     genres.map((genre) => (
-      <Chip key={genre} label={genre} size="small" color="primary" />
+      <Chip
+        key={genre}
+        label={genre}
+        size="small"
+        color="primary"
+        onClick={() => goToGenreMusic(history, genre)}
+      />
     ))
   );
 
@@ -44,6 +50,8 @@ const MusicCard = props => {
           variant="body2"
           component="p"
           align="center"
+          style={{cursor: "pointer"}}
+          onClick={() => goToArtistMusic(history, props.authorName)}
         >
           {props.authorName}
         </Typography>
@@ -52,6 +60,8 @@ const MusicCard = props => {
           component="h4"
           align="center"
           gutterBottom
+          style={{cursor: "pointer"}}
+          onClick={() => goToAlbumMusic(history, props.album)}
         >
           {props.album}
         </Typography>
