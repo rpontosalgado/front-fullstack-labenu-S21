@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { CardActions, Chip, Typography } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
 import {
@@ -8,10 +9,13 @@ import {
   MusicDetailsGenresContainer,
   MusicDetailsInfoWrapper
 } from "./styled";
-import { goToArtistMusic } from "../../routes/Coordinator";
+import {
+  goToAlbumMusic, goToArtistMusic, goToGenreMusic
+} from "../../routes/Coordinator";
 import { timePassed } from "../../utils/timePassed";
 
 const MusicDetailsCard = props => {
+  const history = useHistory();
   
   const RenderGenresList = genres => (
     genres.map((genre, i) => (

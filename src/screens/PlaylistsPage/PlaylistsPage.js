@@ -40,6 +40,7 @@ const PlaylistsPage = () => {
         playlistId={playlist.id}
         title={playlist.title}
         subtitle={playlist.subtitle}
+        image={playlist.image}
         creatorName={playlist.creatorName}
         alert={handleAlert}
       />

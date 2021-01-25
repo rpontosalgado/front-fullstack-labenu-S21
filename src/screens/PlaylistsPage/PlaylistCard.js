@@ -14,9 +14,10 @@ const PlaylistCard = props => {
 
   const playlistImage = (src) => (
     <CardMedia
+      component="img"
       image={src}
       title="Playlist Image"
-      height="320"
+      height="240"
     />
   );
 

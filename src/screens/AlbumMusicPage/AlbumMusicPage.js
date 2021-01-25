@@ -12,7 +12,13 @@ import {
   Typography
 } from "@material-ui/core";
 import { PlaylistAdd } from "@material-ui/icons";
-import { AddToPlaylistButton, AudioPlayer, GenreMusicList } from "./styled";
+import {
+  AddToPlaylistButton,
+  AlbumMusicList,
+  AlbumMusicListItem,
+  AlbumMusicPageContainer,
+  AudioPlayer
+} from "./styled";
 import AlertPop from "../../components/AlertPop/AlertPop"
 import Loading from "../../components/Loading/Loading"
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -176,9 +182,9 @@ const AlbumMusicPage = () => {
       >
         { album }
       </Typography>
-      <GenreMusicList>
+      <AlbumMusicList>
         {music ? RenderAlbumMusic() : <Loading />}
-      </GenreMusicList>
+      </AlbumMusicList>
       <Dialog open={playerOpen} onClose={handleClosePlayer}>
         <DialogContent>
         <AudioPlayer controls preload="auto">

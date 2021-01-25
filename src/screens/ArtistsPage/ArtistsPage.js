@@ -10,7 +10,7 @@ import { goToArtistMusic } from "../../routes/Coordinator";
 const ArtistsPage = () => {
   useProtectedPage();
 
-  const [artistsData] = useRequestData({}, '/genres');
+  const [artistsData] = useRequestData({}, '/artists');
   const { artists } = artistsData;
 
   const history = useHistory();
@@ -31,7 +31,7 @@ const ArtistsPage = () => {
 
   return (
     <ArtistsPageContainer>
-      <Typography variant="h2" color="textPrimary" >Gêneros</Typography>
+      <Typography variant="h2" color="textPrimary" >Artistas</Typography>
       <Divider />
       <ArtistsList>
         {artists ? renderArtists() : <Loading />}

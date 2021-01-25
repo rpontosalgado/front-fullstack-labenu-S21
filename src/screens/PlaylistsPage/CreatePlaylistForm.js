@@ -106,7 +106,7 @@ const CreatePlaylistForm = props => {
         >
           <UploadImageIcon path={mdiFileImage} />
         </Button>
-        <UploadedImage>
+        <UploadedImage component="span" >
           {image.name || "Selecionar imagem"}
         </UploadedImage>
       </label>

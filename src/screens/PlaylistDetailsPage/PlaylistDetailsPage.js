@@ -82,7 +82,7 @@ const PlaylistDetailsPage = () => {
 
   const playlistImage = (src) => (
     <PlaylistImage
-      image={src}
+      src={src}
       alt="Playlist Image"
       title="Playlist Image"
     />
@@ -96,7 +96,7 @@ const PlaylistDetailsPage = () => {
 
   const renderPlaylistMusic = () => (
     playlist.music.map(item => (
-      <PlaylistMusicItem 
+      <PlaylistMusicItem
         key={item.id}
         button
         onClick={

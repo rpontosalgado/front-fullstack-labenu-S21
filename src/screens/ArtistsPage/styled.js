@@ -12,7 +12,7 @@ export const ArtistsList = styled(List)`
   width: 80vw;
   max-width: 800px;
   
-  li:last-child {
+  div:last-child {
     border-bottom: 2px solid rgba(0, 0, 0, 0.54);
   }
 `

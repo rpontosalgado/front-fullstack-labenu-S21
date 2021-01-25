@@ -180,7 +180,7 @@ const ArtistMusicPage = () => {
         component="h4"
         color="textPrimary"
       >
-        { genre }
+        { artist }
       </Typography>
       <ArtistMusicList>
         {music ? RenderArtistMusic() : <Loading />}
