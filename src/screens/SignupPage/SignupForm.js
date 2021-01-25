@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, CircularProgress, IconButton, InputAdornment, TextField } from "@material-ui/core";
-import useForm from "../../hooks/useForm";
-import { InputsContainer, SignupFormContainer } from "./styled";
-import { signup } from "../../services/user";
+import {
+  Button, CircularProgress, IconButton, InputAdornment, TextField
+} from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { InputsContainer, SignupFormContainer } from "./styled";
+import useForm from "../../hooks/useForm";
+import { signup } from "../../services/user";
 
 const SignupForm = props => {
   const history = useHistory();
@@ -29,7 +31,7 @@ const SignupForm = props => {
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -68,25 +70,25 @@ const SignupForm = props => {
     } else {
       if(!form.name) {
         setNameError(true);
-        setNameErrorMessage("Favor informar um nome")
+        setNameErrorMessage("Favor informar um nome");
       }
       
       if(!form.email || form.email.indexOf("@") === -1) {
         setEmailError(true);
-        setEmailErrorMessage("Favor informar um e-mail válido")
+        setEmailErrorMessage("Favor informar um e-mail válido");
       }
       
       if(!form.nickname) {
         setNicknameError(true);
-        setNicknameErrorMessage("Favor informar um apelido")
+        setNicknameErrorMessage("Favor informar um apelido");
       }
       
       if(!form.password) {
         setPasswordError(true);
-        setPasswordErrorMessage("Favor informar uma senha")
+        setPasswordErrorMessage("Favor informar uma senha");
       }
     }
-  }
+  };
 
   return (
     <form id="signup-form">
@@ -168,6 +170,6 @@ const SignupForm = props => {
       </SignupFormContainer>
     </form>
   );
-}
+};
 
 export default SignupForm;

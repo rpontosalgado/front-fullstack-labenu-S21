@@ -32,7 +32,7 @@ export const login = (
         setMessage(err.response.data.message);
       }
     });
-}
+};
 
 export const signup = (
   body,
@@ -70,4 +70,4 @@ export const signup = (
           break;
       }
     });
-}
+};

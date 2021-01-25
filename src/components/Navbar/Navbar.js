@@ -1,8 +1,8 @@
 import React from "react";
-import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
-import { ChevronLeft, MusicNote, QueueMusic } from "@material-ui/icons";
-import { goToMusicList, goToPlaylists } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
+import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
+import { Album, ChevronLeft, MusicNote, People, QueueMusic, Radio } from "@material-ui/icons";
+import { goToAlbums, goToArtists, goToGenres, goToMusicList, goToPlaylists } from "../../routes/Coordinator";
 
 const useStyles = makeStyles(theme => ({
   drawerHeader: {
@@ -27,7 +27,7 @@ const Navbar = props => {
     }
 
     setOpenNavBar(false);
-  }
+  };
 
   const handleNavItemClick = (history, screen) => {
     switch (screen) {
@@ -38,13 +38,25 @@ const Navbar = props => {
       case "playlist":
         goToPlaylists(history);
         break;
+      
+      case "genres":
+        goToGenres(history);
+        break;
+      
+      case "albums":
+        goToAlbums(history);
+        break;
+      
+      case "artists":
+        goToArtists(history);
+        break;
     
       default:
         break;
     }
 
     setOpenNavBar(false);
-  }
+  };
 
   return (
     <Drawer 
@@ -66,7 +78,7 @@ const Navbar = props => {
           <ListItemIcon>
             <MusicNote />
           </ListItemIcon>
-          <ListItemText primary="Music" />
+          <ListItemText primary="Música" />
         </ListItem>
         <ListItem
           button
@@ -77,9 +89,37 @@ const Navbar = props => {
           </ListItemIcon>
           <ListItemText primary="Playlist" />
         </ListItem>
+        <Divider />
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "genres")}
+        >
+          <ListItemIcon>
+            <Radio />
+          </ListItemIcon>
+          <ListItemText primary="Gêneros" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "albums")}
+        >
+          <ListItemIcon>
+            <Album />
+          </ListItemIcon>
+          <ListItemText primary="Álbuns" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavItemClick(history, "artists")}
+        >
+          <ListItemIcon>
+            <People />
+          </ListItemIcon>
+          <ListItemText primary="Artistas" />
+        </ListItem>
       </List>
     </Drawer>
-  )
-}
+  );
+};
 
 export default Navbar;

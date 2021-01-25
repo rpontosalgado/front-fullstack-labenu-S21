@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Button, CircularProgress, DialogActions, TextField, Typography } from "@material-ui/core";
 import { mdiFileMusic } from "@mdi/js";
+import {
+  GenresInputsContainer,
+  GenresInputsTitle,
+  GenresInputsWrapper,
+  UploadedTrack,
+  UploadedTrackError,
+  UploadTrackIcon
+} from "./styled";
 import useForm from "../../hooks/useForm";
 import { createMusic } from "../../services/music";
-import { GenresInputsContainer, GenresInputsTitle, GenresInputsWrapper, UploadedTrack, UploadedTrackError, UploadTrackIcon } from "./styled";
 
 const CreateMusicForm = props => {
   const [form, handleInputChange] = useForm({
@@ -38,7 +45,7 @@ const CreateMusicForm = props => {
     reader.onload = () => {
       setUrl(reader.result);
     }
-  }
+  };
 
   const handleCreateMusicClick = event => {
     event.preventDefault();
@@ -61,7 +68,7 @@ const CreateMusicForm = props => {
         album: form.album,
         genres: [form.genre1],
         file: url
-      }
+      };
 
       form.genre2 && body.genres.push(form.genre2);
       form.genre3 && body.genres.push(form.genre3);
@@ -95,7 +102,7 @@ const CreateMusicForm = props => {
         setFileErrorMessage("É preciso inserir um arquivo");
       }
     }
-  }
+  };
 
   return (
     <form id="create-music-form" >
@@ -214,7 +221,7 @@ const CreateMusicForm = props => {
         </Button>
       </DialogActions>
     </form>
-  )
-}
+  );
+};
 
 export default CreateMusicForm;

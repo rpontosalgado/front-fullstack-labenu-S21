@@ -7,6 +7,12 @@ import MusicListPage from "../screens/MusicListPage/MusicListPage";
 import MusicDetailsPage from "../screens/MusicDetailsPage/MusicDetailsPage";
 import PlaylistsPage from "../screens/PlaylistsPage/PlaylistsPage";
 import PlaylistDetailsPage from "../screens/PlaylistDetailsPage/PlaylistDetailsPage";
+import GenresPage from "../screens/GenresPage/GenresPage";
+import GenreMusicPage from "../screens/GenreMusicPage/GenreMusicPage";
+import AlbumsPage from "../screens/AlbumsPage/AlbumsPage";
+import AlbumMusicPage from "../screens/AlbumMusicPage/AlbumMusicPage";
+import ArtistsPage from "../screens/ArtistsPage/ArtistsPage";
+import ArtistMusicPage from "../screens/ArtistMusicPage/ArtistMusicPage";
 
 const Router = props => {
   return (
@@ -29,11 +35,29 @@ const Router = props => {
       <Route exact path={"/playlist/:id"}>
         <PlaylistDetailsPage />
       </Route>
+      <Route exact path={"/genres"}>
+        <GenresPage />
+      </Route>
+      <Route exact path={"/genres/:genre"}>
+        <GenreMusicPage />
+      </Route>
+      <Route exact path={"/albums"}>
+        <AlbumsPage />
+      </Route>
+      <Route exact path={"/albums/:album"}>
+        <AlbumMusicPage />
+      </Route>
+      <Route exact path={"/artists"}>
+        <ArtistsPage />
+      </Route>
+      <Route exact path={"/artists/:artist"}>
+        <ArtistMusicPage />
+      </Route>
       <Route>
         <ErrorPage />
       </Route>
     </Switch>
   );
-}
+};
 
 export default Router;

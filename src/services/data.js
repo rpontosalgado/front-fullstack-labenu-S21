@@ -13,4 +13,4 @@ export const getData = (endpoint, setData) => {
       .then(response => setData(response.data))
       .catch(err => console.log(err.response));
   }
-}
+};

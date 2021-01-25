@@ -1,5 +1,5 @@
-import Icon from "@mdi/react";
 import styled from "styled-components";
+import Icon from "@mdi/react";
 
 export const ScreenContainer = styled.div`
   display: flex;

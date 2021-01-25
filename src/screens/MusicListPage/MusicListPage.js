@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { Dialog, DialogContent, DialogTitle, Menu, MenuItem } from "@material-ui/core";
+import { mdiMusicNotePlus } from "@mdi/js";
+import { CreateMusicButton, CreateMusicIcon, MusicListContainer } from "./styled";
+import MusicCard from "./MusicCard";
+import CreateMusicForm from "./CreateMusicForm";
+import Loading from "../../components/Loading/Loading"
+import AlertPop from "../../components/AlertPop/AlertPop";
 import useRequestData from "../../hooks/useRequestData";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import MusicCard from "./MusicCard";
-import Loading from "../../components/Loading/Loading"
-import { CreateMusicButton, CreateMusicIcon, MusicListContainer } from "./styled";
-import { mdiMusicNotePlus } from "@mdi/js";
-import { Dialog, DialogContent, DialogTitle, Menu, MenuItem } from "@material-ui/core";
-import CreateMusicForm from "./CreateMusicForm";
-import AlertPop from "../../components/AlertPop/AlertPop";
 import { getData } from "../../services/data";
 import { addMusicToPlaylist } from "../../services/playlist";
 
@@ -22,7 +22,7 @@ const MusicListPage = () => {
   const [openCreateMusic, setOpenCreateMusic] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const openMenu = Boolean(anchorEl);
 
   const [musicToPlaylistId, setMusicToPlaylistId] = useState("");
 
@@ -70,7 +70,7 @@ const MusicListPage = () => {
     const body = {
       playlistId,
       musicId: musicToPlaylistId
-    }
+    };
 
     addMusicToPlaylist(
       body,
@@ -102,7 +102,7 @@ const MusicListPage = () => {
       id="playlists-menu"
       anchorEl={anchorEl}
       keepMounted
-      open={open}
+      open={openMenu}
       onClose={handleClosePlaylistsMenu}
       PaperProps={{
         style: {
@@ -112,7 +112,7 @@ const MusicListPage = () => {
       }}
     >
       {playlistsData.playlist.map(option => (
-        <MenuItem 
+        <MenuItem
           key={option.id}
           onClick={() => handleClickAddToPlaylist(option.id)}
         >
@@ -148,6 +148,6 @@ const MusicListPage = () => {
       />
     </MusicListContainer>
   );
-}
+};
 
 export default MusicListPage;

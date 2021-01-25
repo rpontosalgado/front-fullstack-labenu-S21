@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { goToLogin } from "../../routes/Coordinator";
 import { AppBar, Button, Toolbar } from "@material-ui/core";
 import { ButtonContainer, HeaderButton, HeaderTitle, LogoIcon, LogTitle } from "./styled";
 import { mdiSharkFin } from '@mdi/js'; 
+import { goToLogin } from "../../routes/Coordinator";
 
 const Header = props => {
   const {buttonName, setButtonName, setOpenNavBar} = props;
@@ -17,11 +17,11 @@ const Header = props => {
     } else {
       goToLogin(history);
     }
-  }
+  };
 
   const logout = () => {
     localStorage.removeItem("token");
-  }
+  };
 
   const HeaderAction = () => {
     if (token) {
@@ -30,7 +30,7 @@ const Header = props => {
     }
 
     goToLogin(history);
-  }
+  };
 
   return (
     <AppBar>
@@ -46,7 +46,7 @@ const Header = props => {
         </ButtonContainer>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
 export default Header;

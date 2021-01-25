@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dialog, DialogContent, IconButton, ListItemSecondaryAction, ListItemText, Typography } from "@material-ui/core";
+import {
+  Dialog,
+  DialogContent,
+  IconButton,
+  ListItemSecondaryAction,
+  ListItemText,
+  Typography
+} from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import { mdiSharkFin } from "@mdi/js";
+import {
+  PlaceholderMedia,
+  PlaceholderIcon,
+  PlaylistDetailsPageContainer,
+  PlaylistImage,
+  PlaylistMusic,
+  PlaylistMusicItem,
+  AudioPlayer
+} from "./styled";
+import Loading from "../../components/Loading/Loading";
+import AlertPop from "../../components/AlertPop/AlertPop";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
-import Loading from "../../components/Loading/Loading";
-import { PlaceholderMedia, PlaceholderIcon, PlaylistDetailsPageContainer, PlaylistImage, PlaylistMusic, PlaylistMusicItem, AudioPlayer } from "./styled";
 import { deleteMusicFromPlaylist } from "../../services/playlist";
-import AlertPop from "../../components/AlertPop/AlertPop";
 
 const PlaylistDetailsPage = () => {
   useProtectedPage();
@@ -46,7 +61,7 @@ const PlaylistDetailsPage = () => {
       `/playlist/${id}/music/${musicId}`,
       updateDetails,
       handleAlert
-    )
+    );
   };
 
   const handleAlert = (severity, message) => {
@@ -67,7 +82,7 @@ const PlaylistDetailsPage = () => {
 
   const playlistImage = (src) => (
     <PlaylistImage
-      image={src}
+      src={src}
       alt="Playlist Image"
       title="Playlist Image"
     />
@@ -81,7 +96,7 @@ const PlaylistDetailsPage = () => {
 
   const renderPlaylistMusic = () => (
     playlist.music.map(item => (
-      <PlaylistMusicItem 
+      <PlaylistMusicItem
         key={item.id}
         button
         onClick={
@@ -116,6 +131,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="h4"
         component="h3"
+        color="textPrimary"
         gutterBottom
         style={{"marginTop": "1.5rem"}}
       >
@@ -124,6 +140,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="body2"
         component="h4"
+        color="textPrimary"
         gutterBottom
       >
         {playlist.subtitle}
@@ -131,6 +148,7 @@ const PlaylistDetailsPage = () => {
       <Typography
         variant="body1"
         component="h5"
+        color="textPrimary"
         gutterBottom
       >
         by {playlist.creatorName}
@@ -147,6 +165,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="h6"
           component="h3"
+          color="textPrimary"
           align="center"
           gutterBottom
         >
@@ -155,6 +174,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="body2"
           component="p"
+          color="textPrimary"
           align="center"
         >
           {song.artist}
@@ -162,6 +182,7 @@ const PlaylistDetailsPage = () => {
         <Typography
           variant="body1"
           component="h4"
+          color="textPrimary"
           align="center"
           gutterBottom
         >
@@ -176,8 +197,8 @@ const PlaylistDetailsPage = () => {
     </PlaylistDetailsPageContainer>
   );
 
-  return (playlist ? renderPlaylistDetails() : <Loading />)
+  return (playlist ? renderPlaylistDetails() : <Loading />);
   
-}
+};
 
 export default PlaylistDetailsPage;

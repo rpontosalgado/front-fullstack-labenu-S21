@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, CircularProgress, IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { login } from "../../services/user";
 import { InputsContainer, LoginFormContainer } from "./styled";
 import useForm from "../../hooks/useForm";
+import { login } from "../../services/user";
 
 const LoginForm = props => {
   const [form, handleInputChange] = useForm({input: "", password: ""});
@@ -58,7 +58,7 @@ const LoginForm = props => {
         setPasswordErrorMessage("Favor informar sua senha");
       }
     }
-  }
+  };
 
   return (
     <form id="login-form">
@@ -115,6 +115,6 @@ const LoginForm = props => {
       </LoginFormContainer>
     </form>
   );
-}
+};
 
 export default LoginForm;

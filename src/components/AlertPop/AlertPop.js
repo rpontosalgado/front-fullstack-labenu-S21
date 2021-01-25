@@ -14,7 +14,7 @@ const AlertPop = props => {
         {props.alert.message}
       </Alert>
     </Snackbar>
-  )
-}
+  );
+};
 
 export default AlertPop;
