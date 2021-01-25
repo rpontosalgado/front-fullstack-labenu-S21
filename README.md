@@ -3,6 +3,8 @@ front-fullstack-labenu-S21
 
 Projeto Full Stack para a Labenu
 
+Deploy temporário: [Surge](http://bizarre-soap.surge.sh/)
+
 Descrição do projeto
 --------------------
 
