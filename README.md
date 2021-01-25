@@ -3,12 +3,12 @@ front-fullstack-labenu-S21
 
 Projeto Full Stack para a Labenu
 
-Deploy temporário: [Surge](http://bizarre-soap.surge.sh/)
-
 Descrição do projeto
 --------------------
 
 Aplicação web para gerenciar músicas
+
+Deploy temporário: [Surge](http://bizarre-soap.surge.sh/)
 
 ![Badge](https://img.shields.io/badge/build-unstable-yellow)
 
